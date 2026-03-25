@@ -4,8 +4,8 @@ function pad(value) {
 
 function DigitCard({ digit }) {
   return (
-    <div className="flex h-20 w-[4.2rem] items-center justify-center rounded-2xl border border-white/10 bg-[#111111] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.03)] sm:h-24 sm:w-[4.8rem]">
-      <span className="font-mono text-5xl font-semibold tracking-[0.08em] text-emerald-300 sm:text-6xl">{digit}</span>
+    <div className="flex h-24 w-[4.8rem] items-center justify-center rounded-2xl border border-emerald-200/15 bg-[#101010] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04),0_0_24px_rgba(74,222,128,0.08)] sm:h-28 sm:w-[5.4rem]">
+      <span className="font-mono text-6xl font-semibold tracking-[0.08em] text-emerald-300 drop-shadow-[0_0_14px_rgba(110,255,178,0.95)] sm:text-7xl">{digit}</span>
     </div>
   );
 }
@@ -18,11 +18,11 @@ export default function DigitalTimeDisplay({ time }) {
       <div className="flex items-center justify-center gap-2 sm:gap-3">
         <DigitCard digit={digits[0]} />
         <DigitCard digit={digits[1]} />
-        <div className="px-1 font-mono text-4xl text-emerald-300 sm:text-5xl">•</div>
+        <div className="px-1 font-mono text-5xl text-red-400 drop-shadow-[0_0_12px_rgba(255,92,92,0.9)] sm:text-6xl">•</div>
         <DigitCard digit={digits[2]} />
         <DigitCard digit={digits[3]} />
       </div>
-      <p className="mt-4 font-mono text-xs uppercase tracking-[0.35em] text-white/35">Units / 100</p>
+      <p className="mt-4 font-mono text-xs uppercase tracking-[0.35em] text-white/40">Units / 100</p>
     </div>
   );
 }

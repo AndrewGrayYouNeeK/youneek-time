@@ -19,7 +19,7 @@ export default function YouNeekClock() {
   }, []);
 
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-[30rem] flex-col items-center gap-7 px-4 py-8 sm:gap-8 sm:py-10">
+    <div className="mx-auto flex min-h-screen w-full max-w-[36rem] flex-col items-center gap-8 px-4 py-8 sm:gap-9 sm:py-10">
       <ClockHeader now={now} />
       <DigitalTimeDisplay time={time} />
       <ClockDial time={time} />

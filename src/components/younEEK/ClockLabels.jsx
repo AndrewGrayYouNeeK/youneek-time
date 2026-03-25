@@ -7,36 +7,37 @@ const polarPoint = (radius, angleDeg) => {
 };
 
 const outerLabels = [
-  { label: '03', angle: 50 },
-  { label: '06', angle: 90 },
-  { label: '09', angle: 130 },
-  { label: '12', angle: 180 },
-  { label: '15', angle: 230 },
-  { label: '18', angle: 270 },
-  { label: '21', angle: 310 }
+  { label: '0', angle: 0, color: 'rgba(248,113,113,1)', size: 22 },
+  { label: '03', angle: 45, color: 'rgba(134,239,172,1)', size: 18 },
+  { label: '06', angle: 90, color: 'rgba(134,239,172,1)', size: 18 },
+  { label: '09', angle: 135, color: 'rgba(134,239,172,1)', size: 18 },
+  { label: '12', angle: 180, color: 'rgba(134,239,172,1)', size: 18 },
+  { label: '15', angle: 225, color: 'rgba(134,239,172,1)', size: 18 },
+  { label: '18', angle: 270, color: 'rgba(134,239,172,1)', size: 18 },
+  { label: '21', angle: 315, color: 'rgba(134,239,172,1)', size: 18 }
 ];
 
 const innerLabels = [
-  { label: '10', angle: 38 },
-  { label: '20', angle: 68 },
-  { label: '30', angle: 112 },
-  { label: '40', angle: 146 },
+  { label: '10', angle: 36 },
+  { label: '20', angle: 72 },
+  { label: '30', angle: 108 },
+  { label: '40', angle: 144 },
   { label: '50', angle: 180 },
-  { label: '60', angle: 214 },
-  { label: '70', angle: 248 },
-  { label: '80', angle: 292 },
-  { label: '90', angle: 322 }
+  { label: '60', angle: 216 },
+  { label: '70', angle: 252 },
+  { label: '80', angle: 288 },
+  { label: '90', angle: 324 }
 ];
 
 export default function ClockLabels() {
   return (
     <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full">
-      <text x="200" y="214" textAnchor="middle" fill="rgba(255,255,255,0.05)" fontSize="34" fontFamily="monospace" letterSpacing="4">
+      <text x="200" y="214" textAnchor="middle" fill="rgba(255,255,255,0.04)" fontSize="34" fontFamily="monospace" letterSpacing="4">
         YOUNEEK
       </text>
 
       {outerLabels.map((item) => {
-        const point = polarPoint(152, item.angle);
+        const point = polarPoint(164, item.angle);
         return (
           <text
             key={item.label}
@@ -44,10 +45,11 @@ export default function ClockLabels() {
             y={point.y}
             textAnchor="middle"
             dominantBaseline="middle"
-            fill="rgba(134,239,172,0.9)"
-            fontSize="16"
+            fill={item.color}
+            fontSize={item.size}
             fontFamily="monospace"
             fontWeight="700"
+            style={{ filter: `drop-shadow(0 0 10px ${item.color})` }}
           >
             {item.label}
           </text>
@@ -55,7 +57,7 @@ export default function ClockLabels() {
       })}
 
       {innerLabels.map((item) => {
-        const point = polarPoint(118, item.angle);
+        const point = polarPoint(128, item.angle);
         return (
           <text
             key={item.label}
@@ -63,9 +65,11 @@ export default function ClockLabels() {
             y={point.y}
             textAnchor="middle"
             dominantBaseline="middle"
-            fill="rgba(248,113,113,0.75)"
-            fontSize="11"
+            fill="rgba(248,113,113,0.95)"
+            fontSize="12"
             fontFamily="monospace"
+            fontWeight="700"
+            style={{ filter: 'drop-shadow(0 0 8px rgba(248,113,113,0.8))' }}
           >
             {item.label}
           </text>
