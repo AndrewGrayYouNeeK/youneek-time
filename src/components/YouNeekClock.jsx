@@ -22,20 +22,32 @@ export default function YouNeekClock() {
       return;
     }
 
-    const heartbeat = () => navigator.vibrate([24, 90, 42]);
-    heartbeat();
+    let echoTimeout;
+    const heartbeat = () => {
+      navigator.vibrate(22);
+      echoTimeout = window.setTimeout(() => {
+        navigator.vibrate(38);
+      }, 140);
+    };
 
-    const intervalId = window.setInterval(heartbeat, 3200);
-    return () => window.clearInterval(intervalId);
+    heartbeat();
+    const intervalId = window.setInterval(heartbeat, 1200);
+
+    return () => {
+      window.clearInterval(intervalId);
+      if (echoTimeout) {
+        window.clearTimeout(echoTimeout);
+      }
+    };
   }, []);
 
   return (
-    <div className="flex min-h-screen w-full items-center justify-center px-4 py-8">
-      <div className="flex flex-col items-center gap-8">
-        <ClockDial progress={time.progress} display={time.display} />
-        <p className="text-center text-xs uppercase tracking-[0.45em] text-white/45 sm:text-sm">
-          breathing light · heartbeat pulse
-        </p>
+    <div className="flex w-full flex-col items-center gap-8 px-4 py-4">
+      <ClockDial time={time} />
+      <div className="flex flex-wrap items-center justify-center gap-3 text-center text-[10px] uppercase tracking-[0.35em] text-white/45 sm:text-xs">
+        <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2">breathing glow</span>
+        <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2">heartbeat haptics</span>
+        <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2">100 glowing ticks</span>
       </div>
     </div>
   );
