@@ -7,7 +7,7 @@ const polarPoint = (radius, angleDeg) => {
 };
 
 const outerLabels = [
-  { label: '0', angle: 0, color: 'rgba(248,113,113,1)', size: 22 },
+  { label: '0', angle: 0, color: 'rgba(248,113,113,1)', size: 22, offsetY: 8 },
   { label: '03', angle: 45, color: 'rgba(134,239,172,1)', size: 18 },
   { label: '06', angle: 90, color: 'rgba(134,239,172,1)', size: 18 },
   { label: '09', angle: 135, color: 'rgba(134,239,172,1)', size: 18 },
@@ -42,7 +42,7 @@ export default function ClockLabels() {
           <text
             key={item.label}
             x={point.x}
-            y={point.y}
+            y={point.y + (item.offsetY || 0)}
             textAnchor="middle"
             dominantBaseline="middle"
             fill={item.color}
