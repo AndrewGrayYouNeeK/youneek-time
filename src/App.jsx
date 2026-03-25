@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
+import Index from '@/pages/Index';
+import Widget from '@/pages/Widget';
 // Add page imports here
 
 const AuthenticatedApp = () => {
@@ -34,6 +36,8 @@ const AuthenticatedApp = () => {
   return (
     <Routes>
       {/* Add your page Route elements here */}
+      <Route path="/" element={<Index />} />
+      <Route path="/widget" element={<Widget />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
