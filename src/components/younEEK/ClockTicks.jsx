@@ -1,8 +1,8 @@
 const OUTER_TICKS = Array.from({ length: 24 }, (_, index) => {
   const angle = (index / 24) * Math.PI * 2 - Math.PI / 2;
   const isMajor = index % 3 === 0;
-  const innerRadius = isMajor ? 164 : 172;
-  const outerRadius = 188;
+  const innerRadius = isMajor ? 154 : 162;
+  const outerRadius = 178;
 
   return {
     x1: 200 + Math.cos(angle) * innerRadius,
@@ -18,8 +18,8 @@ const OUTER_TICKS = Array.from({ length: 24 }, (_, index) => {
 const INNER_TICKS = Array.from({ length: 100 }, (_, index) => {
   const angle = (index / 100) * Math.PI * 2 - Math.PI / 2;
   const isMajor = index % 10 === 0;
-  const innerRadius = 138;
-  const outerRadius = isMajor ? 156 : 150;
+  const innerRadius = 130;
+  const outerRadius = isMajor ? 146 : 141;
 
   return {
     x1: 200 + Math.cos(angle) * innerRadius,
