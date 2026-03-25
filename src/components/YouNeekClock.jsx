@@ -13,7 +13,7 @@ export default function YouNeekClock() {
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       setNow(new Date());
-    }, 100);
+    }, 16);
 
     return () => window.clearInterval(intervalId);
   }, []);
