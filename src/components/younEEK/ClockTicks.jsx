@@ -43,7 +43,18 @@ export default function ClockTicks() {
           x2={tick.x2}
           y2={tick.y2}
           stroke={`rgba(110,255,178,${tick.opacity})`}
-...
+          strokeWidth={tick.strokeWidth}
+          strokeLinecap="round"
+        />
+      ))}
+
+      {INNER_TICKS.map((tick) => (
+        <line
+          key={tick.key}
+          x1={tick.x1}
+          y1={tick.y1}
+          x2={tick.x2}
+          y2={tick.y2}
           stroke={`rgba(255,92,92,${tick.opacity})`}
           strokeWidth={tick.strokeWidth}
           strokeLinecap="round"
