@@ -7,7 +7,7 @@ export default function ClockDial({ time }) {
   return (
     <motion.div
       animate={{ scale: [1, 1.028, 1, 1.055, 1] }}
-      transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
+      transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
       className="relative aspect-square w-full max-w-[32rem]"
     >
       <div className="absolute inset-[-6%] rounded-full bg-emerald-300/20 blur-[80px]" />
