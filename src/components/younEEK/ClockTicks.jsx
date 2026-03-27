@@ -1,7 +1,7 @@
-const OUTER_TICKS = Array.from({ length: 24 }, (_, index) => {
-  const angle = (index / 24) * Math.PI * 2 - Math.PI / 2;
-  const isMajor = index % 3 === 0;
-  const innerRadius = isMajor ? 156 : 168;
+// 12 green major ticks (hour positions)
+const MAJOR_TICKS = Array.from({ length: 12 }, (_, index) => {
+  const angle = (index / 12) * Math.PI * 2 - Math.PI / 2;
+  const innerRadius = 176;
   const outerRadius = 190;
 
   return {
@@ -9,11 +9,32 @@ const OUTER_TICKS = Array.from({ length: 24 }, (_, index) => {
     y1: 200 + Math.sin(angle) * innerRadius,
     x2: 200 + Math.cos(angle) * outerRadius,
     y2: 200 + Math.sin(angle) * outerRadius,
-    strokeWidth: isMajor ? 1.7 : 0.9,
-    opacity: isMajor ? 0.95 : 0.72,
-    key: `outer-${index}`
+    strokeWidth: 1.4,
+    stroke: '#10b981',
+    opacity: 0.9,
+    key: `major-${index}`
   };
 });
+
+// 60 red minor ticks (minute positions)
+const MINOR_TICKS = Array.from({ length: 60 }, (_, index) => {
+  const angle = (index / 60) * Math.PI * 2 - Math.PI / 2;
+  const innerRadius = 182;
+  const outerRadius = 190;
+
+  return {
+    x1: 200 + Math.cos(angle) * innerRadius,
+    y1: 200 + Math.sin(angle) * innerRadius,
+    x2: 200 + Math.cos(angle) * outerRadius,
+    y2: 200 + Math.sin(angle) * outerRadius,
+    strokeWidth: 0.7,
+    stroke: '#ef4444',
+    opacity: 0.7,
+    key: `minor-${index}`
+  };
+});
+
+const OUTER_TICKS = [...MAJOR_TICKS, ...MINOR_TICKS];
 
 const INNER_TICKS = Array.from({ length: 100 }, (_, index) => {
   const angle = (index / 100) * Math.PI * 2 - Math.PI / 2;
@@ -42,8 +63,9 @@ export default function ClockTicks() {
           y1={tick.y1}
           x2={tick.x2}
           y2={tick.y2}
-          stroke={`rgba(110,255,178,${tick.opacity})`}
+          stroke={tick.stroke}
           strokeWidth={tick.strokeWidth}
+          opacity={tick.opacity}
           strokeLinecap="round"
         />
       ))}
