@@ -1,17 +1,16 @@
 const OUTER_TICKS = Array.from({ length: 60 }, (_, index) => {
   const angle = (index / 60) * Math.PI * 2 - Math.PI / 2;
   const isMajor = index % 5 === 0;
-  const outerRadius = 190;
-  const innerRadius = isMajor ? 178 : 184; // 12px vs 6px length
+  const outerRadius = 198;
+  const innerRadius = isMajor ? 184 : 191;
 
   return {
     x1: 200 + Math.cos(angle) * outerRadius,
     y1: 200 + Math.sin(angle) * outerRadius,
     x2: 200 + Math.cos(angle) * innerRadius,
     y2: 200 + Math.sin(angle) * innerRadius,
-    strokeWidth: isMajor ? 2 : 1,
+    strokeWidth: isMajor ? 2.5 : 1,
     stroke: isMajor ? '#00ff88' : '#ff4444',
-    opacity: 1,
     key: `tick-${index}`
   };
 });
@@ -45,11 +44,9 @@ export default function ClockTicks() {
           y2={tick.y2}
           stroke={tick.stroke}
           strokeWidth={tick.strokeWidth}
-          opacity={tick.opacity}
           strokeLinecap="round"
         />
       ))}
-
       {INNER_TICKS.map((tick) => (
         <line
           key={tick.key}
