@@ -1,16 +1,34 @@
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import Index from '@/pages/Index';
 import Widget from '@/pages/Widget';
+import Settings from '@/pages/Settings';
+import Header from '@/components/Header';
+import BottomTab from '@/components/BottomTab';
+import { AnimatePresence, motion } from 'framer-motion';
 // Add page imports here
+
+const PageTransition = ({ children }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -100 }}
+      transition={{ duration: 0.3 }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
+  const location = useLocation();
 
   // Show loading spinner while checking app public settings or auth
   if (isLoadingPublicSettings || isLoadingAuth) {
@@ -34,12 +52,19 @@ const AuthenticatedApp = () => {
 
   // Render the main app
   return (
-    <Routes>
-      {/* Add your page Route elements here */}
-      <Route path="/" element={<Index />} />
-      <Route path="/widget" element={<Widget />} />
-      <Route path="*" element={<PageNotFound />} />
-    </Routes>
+    <div style={{ paddingTop: 'max(0, env(safe-area-inset-top))' }}>
+      <Header />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          {/* Add your page Route elements here */}
+          <Route path="/" element={<PageTransition><Index /></PageTransition>} />
+          <Route path="/widget" element={<PageTransition><Widget /></PageTransition>} />
+          <Route path="/settings" element={<PageTransition><Settings /></PageTransition>} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </AnimatePresence>
+      <BottomTab />
+    </div>
   );
 };
 
