@@ -10,7 +10,7 @@ const OUTER_TICKS = Array.from({ length: 60 }, (_, index) => {
     x2: 200 + Math.cos(angle) * innerRadius,
     y2: 200 + Math.sin(angle) * innerRadius,
     strokeWidth: isMajor ? 2.5 : 1,
-    stroke: isMajor ? '#00ff88' : '#ff4444',
+    stroke: '#00ff88',
     key: `tick-${index}`
   };
 });
