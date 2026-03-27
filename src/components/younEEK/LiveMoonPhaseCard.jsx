@@ -1,8 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { base44 } from '@/api/base44Client';
 
-const moonPhoto = 'https://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg';
-
 function normalizePhase(phase) {
   const value = (phase || '').toLowerCase();
 
@@ -34,10 +32,10 @@ export default function LiveMoonPhaseCard() {
 
   const phaseName = useMemo(() => normalizePhase(moon?.phase), [moon?.phase]);
   const illumination = Number(moon?.illumination || 0);
-  const shadowWidth = `${100 - illumination}%`;
-  const shadowStyle = phaseName.includes('Waning') || phaseName === 'Last Quarter'
-    ? { width: shadowWidth, left: 0 }
-    : { width: shadowWidth, right: 0 };
+  const isWaning = phaseName.includes('Waning') || phaseName === 'Last Quarter';
+  const shadowStyle = isWaning
+    ? { clipPath: `inset(0 ${illumination}% 0 0)` }
+    : { clipPath: `inset(0 0 0 ${illumination}%)` };
 
   if (loading) {
     return (
@@ -54,8 +52,12 @@ export default function LiveMoonPhaseCard() {
   return (
     <section className="w-full overflow-hidden rounded-[1.9rem] border border-white/10 bg-[#0d0d0d] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02),0_0_28px_rgba(0,0,0,0.35)]">
       <div className="relative h-64 w-full overflow-hidden bg-[#050505] sm:h-72">
-        <img src={moonPhoto} alt={phaseName} className="h-full w-full object-cover opacity-90" />
-        <div className="absolute inset-y-0 bg-[#020202]/92 blur-[2px]" style={shadowStyle} />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1),transparent_62%)]" />
+        <div className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_35%_30%,#f8fafc_0%,#e2e8f0_18%,#cbd5e1_38%,#94a3b8_70%,#475569_100%)] sm:h-52 sm:w-52" />
+        <div className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full sm:h-52 sm:w-52">
+          <div className="absolute inset-0 rounded-full bg-[#020202]" style={shadowStyle} />
+        </div>
+        <div className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_30%_28%,rgba(255,255,255,0.22),transparent_20%),radial-gradient(circle_at_68%_62%,rgba(15,23,42,0.18),transparent_18%),radial-gradient(circle_at_55%_40%,rgba(71,85,105,0.2),transparent_14%)] sm:h-52 sm:w-52" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-emerald-200">Live moon phase</p>
