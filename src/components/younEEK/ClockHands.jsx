@@ -2,7 +2,7 @@ export default function ClockHands({ unitRotation, minuteRotation, secondRotatio
   return (
     <>
       <div className="absolute inset-0" style={{ transform: `rotate(${minuteRotation}deg)` }}>
-        <div className="absolute left-1/2 top-[13%] h-[37%] w-[2px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#00ff88] via-[#00ff88] to-transparent" />
+        <div className="absolute left-1/2 top-[13%] h-[37%] w-[2px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#ff1111] via-[#ff1111] to-transparent" />
       </div>
 
       <div className="absolute inset-0" style={{ transform: `rotate(${unitRotation}deg)` }}>
