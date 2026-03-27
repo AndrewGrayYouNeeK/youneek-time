@@ -29,19 +29,19 @@ export default function AboutSection() {
               {section.title}
             </h2>
 
-            <p className="mt-4 max-w-[32rem] font-mono text-[13px] leading-8 tracking-[0.08em] text-white/45 sm:text-[14px]">
+            <p className="mt-4 max-w-[32rem] font-mono text-[13px] leading-8 tracking-[0.08em] text-white/72 sm:text-[14px]">
               {section.body}
             </p>
 
             {section.points && (
-              <ul className="mt-4 space-y-3 font-mono text-[13px] tracking-[0.08em] text-white/70 sm:text-[14px]">
+              <ul className="mt-4 space-y-3 font-mono text-[13px] tracking-[0.08em] text-white/85 sm:text-[14px]">
                 {section.points.map((point) => {
                   const [value, label] = point.split(' = ');
                   return (
                     <li key={point} className="flex items-center gap-3">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_10px_rgba(110,255,178,0.8)]" />
                       <span className="min-w-[2.4rem] font-semibold text-emerald-300">{value}</span>
-                      <span className="text-white/42">= {label}</span>
+                      <span className="text-white/72">= {label}</span>
                     </li>
                   );
                 })}
