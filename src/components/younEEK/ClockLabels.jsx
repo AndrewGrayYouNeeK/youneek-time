@@ -7,14 +7,14 @@ const polarPoint = (radius, angleDeg) => {
 };
 
 const outerLabels = [
-  { label: '0', angle: 0, color: 'rgba(248,113,113,1)', size: 18, offsetY: 8 },
-  { label: '03', angle: 45, color: 'rgba(134,239,172,1)', size: 15 },
-  { label: '06', angle: 90, color: 'rgba(134,239,172,1)', size: 15 },
-  { label: '09', angle: 135, color: 'rgba(134,239,172,1)', size: 15 },
-  { label: '12', angle: 180, color: 'rgba(134,239,172,1)', size: 15 },
-  { label: '15', angle: 225, color: 'rgba(134,239,172,1)', size: 15 },
-  { label: '18', angle: 270, color: 'rgba(134,239,172,1)', size: 15 },
-  { label: '21', angle: 315, color: 'rgba(134,239,172,1)', size: 15 }
+  { label: '0', angle: 0, color: '#00ff88', size: 18, offsetY: 8 },
+  { label: '03', angle: 45, color: '#00ff88', size: 15 },
+  { label: '06', angle: 90, color: '#00ff88', size: 15 },
+  { label: '09', angle: 135, color: '#00ff88', size: 15 },
+  { label: '12', angle: 180, color: '#00ff88', size: 15 },
+  { label: '15', angle: 225, color: '#00ff88', size: 15 },
+  { label: '18', angle: 270, color: '#00ff88', size: 15 },
+  { label: '21', angle: 315, color: '#00ff88', size: 15 }
 ];
 
 const innerLabels = [
@@ -37,7 +37,7 @@ export default function ClockLabels() {
       </text>
 
       {outerLabels.map((item) => {
-        const point = polarPoint(140, item.angle);
+        const point = polarPoint(170, item.angle);
         return (
           <text
             key={item.label}
