@@ -63,7 +63,7 @@ export default function ClockLabels() {
             y={point.y}
             textAnchor="middle"
             dominantBaseline="middle"
-            fill="#ff5555"
+            fill="#ff1111"
             fontSize="10"
             fontFamily="monospace"
             fontWeight="700"
