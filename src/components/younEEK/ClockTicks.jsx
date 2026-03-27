@@ -19,7 +19,7 @@ const INNER_TICKS = Array.from({ length: 100 }, (_, index) => {
   const angle = (index / 100) * Math.PI * 2 - Math.PI / 2;
   const isMajor = index % 10 === 0;
   const innerRadius = 150;
-  const outerRadius = isMajor ? 162 : 162;
+  const outerRadius = isMajor ? 162 : 157;
 
   return {
     x1: 200 + Math.cos(angle) * innerRadius,
@@ -27,7 +27,7 @@ const INNER_TICKS = Array.from({ length: 100 }, (_, index) => {
     x2: 200 + Math.cos(angle) * outerRadius,
     y2: 200 + Math.sin(angle) * outerRadius,
     strokeWidth: isMajor ? 2.2 : 0.8,
-    opacity: isMajor ? 0.92 : 0.48,
+    opacity: 1,
     key: `inner-${index}`
   };
 });
@@ -54,7 +54,7 @@ export default function ClockTicks() {
           y1={tick.y1}
           x2={tick.x2}
           y2={tick.y2}
-          stroke={`rgba(255,92,92,${tick.opacity})`}
+          stroke="#ff0055"
           strokeWidth={tick.strokeWidth}
           strokeLinecap="round"
         />
