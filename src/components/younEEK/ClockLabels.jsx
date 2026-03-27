@@ -7,13 +7,13 @@ const polarPoint = (radius, angleDeg) => {
 };
 
 const outerLabels = [
-  { label: '03', angle: 45, color: '#00ff88', size: 15 },
-  { label: '06', angle: 90, color: '#00ff88', size: 15 },
-  { label: '09', angle: 135, color: '#00ff88', size: 15 },
-  { label: '12', angle: 180, color: '#00ff88', size: 15 },
-  { label: '15', angle: 225, color: '#00ff88', size: 15 },
-  { label: '18', angle: 270, color: '#00ff88', size: 15 },
-  { label: '21', angle: 315, color: '#00ff88', size: 15 }
+  { label: '03', angle: 45, color: '#00ff88', size: 12 },
+  { label: '06', angle: 90, color: '#00ff88', size: 12 },
+  { label: '09', angle: 135, color: '#00ff88', size: 12 },
+  { label: '12', angle: 180, color: '#00ff88', size: 12 },
+  { label: '15', angle: 225, color: '#00ff88', size: 12 },
+  { label: '18', angle: 270, color: '#00ff88', size: 12 },
+  { label: '21', angle: 315, color: '#00ff88', size: 12 }
 ];
 
 const innerLabels = [
