@@ -25,7 +25,7 @@ export default function AboutSection() {
       <div className="space-y-6">
         {sections.map((section, index) => (
           <div key={section.title} className={index === 0 ? '' : 'border-t border-white/8 pt-6'}>
-            <h2 className="font-mono text-sm uppercase tracking-[0.35em] text-emerald-300 drop-shadow-[0_0_10px_rgba(110,255,178,0.35)] sm:text-[15px]">
+            <h2 className="font-mono text-sm uppercase tracking-[0.35em] text-emerald-300 sm:text-[15px]">
               {section.title}
             </h2>
 

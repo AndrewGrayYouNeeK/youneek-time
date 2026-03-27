@@ -59,7 +59,7 @@ export default function LiveMoonPhaseCard() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-emerald-300/90">Live moon phase</p>
-          <h2 className="mt-3 font-mono text-2xl uppercase tracking-[0.22em] text-white drop-shadow-[0_0_14px_rgba(255,255,255,0.18)] sm:text-3xl">{phaseName}</h2>
+          <h2 className="mt-3 font-mono text-2xl uppercase tracking-[0.22em] text-white sm:text-3xl">{phaseName}</h2>
         </div>
       </div>
 
