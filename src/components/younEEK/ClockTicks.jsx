@@ -1,15 +1,16 @@
-const OUTER_TICKS = Array.from({ length: 60 }, (_, index) => {
-  const angle = (index / 60) * Math.PI * 2 - Math.PI / 2;
-  const isMajor = index % 5 === 0;
+const OUTER_TICKS = Array.from({ length: 24 }, (_, index) => {
+  const angle = (index / 24) * Math.PI * 2 - Math.PI / 2;
+  const isMajor = index % 3 === 0;
   const outerRadius = 198;
-  const innerRadius = isMajor ? 176 : 192;
+  const innerRadius = isMajor ? 184 : 191;
+
   return {
     x1: 200 + Math.cos(angle) * outerRadius,
     y1: 200 + Math.sin(angle) * outerRadius,
     x2: 200 + Math.cos(angle) * innerRadius,
     y2: 200 + Math.sin(angle) * innerRadius,
-    strokeWidth: isMajor ? 3 : 1,
-    stroke: isMajor ? '#00ff88' : '#ff4444',
+    strokeWidth: isMajor ? 2.5 : 1,
+    stroke: '#00ff88',
     key: `tick-${index}`
   };
 });
@@ -17,15 +18,16 @@ const OUTER_TICKS = Array.from({ length: 60 }, (_, index) => {
 const INNER_TICKS = Array.from({ length: 100 }, (_, index) => {
   const angle = (index / 100) * Math.PI * 2 - Math.PI / 2;
   const isMajor = index % 10 === 0;
-  const innerRadius = 132;
-  const outerRadius = isMajor ? 149 : 145;
+  const innerRadius = isMajor ? 150 : 156;
+  const outerRadius = 162;
+
   return {
     x1: 200 + Math.cos(angle) * innerRadius,
     y1: 200 + Math.sin(angle) * innerRadius,
     x2: 200 + Math.cos(angle) * outerRadius,
     y2: 200 + Math.sin(angle) * outerRadius,
-    strokeWidth: isMajor ? 1.5 : 0.8,
-    opacity: isMajor ? 0.92 : 0.48,
+    strokeWidth: isMajor ? 2.2 : 0.8,
+    opacity: 1,
     key: `inner-${index}`
   };
 });
@@ -33,13 +35,30 @@ const INNER_TICKS = Array.from({ length: 100 }, (_, index) => {
 export default function ClockTicks() {
   return (
     <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full">
+      <circle cx="200" cy="200" r="162" stroke="rgba(255,255,255,0.3)" strokeWidth="0.2" fill="none" />
       {OUTER_TICKS.map((tick) => (
-        <line key={tick.key} x1={tick.x1} y1={tick.y1} x2={tick.x2} y2={tick.y2}
-          stroke={tick.stroke} strokeWidth={tick.strokeWidth} strokeLinecap="round" />
+        <line
+          key={tick.key}
+          x1={tick.x1}
+          y1={tick.y1}
+          x2={tick.x2}
+          y2={tick.y2}
+          stroke={tick.stroke}
+          strokeWidth={tick.strokeWidth}
+          strokeLinecap="round"
+        />
       ))}
       {INNER_TICKS.map((tick) => (
-        <line key={tick.key} x1={tick.x1} y1={tick.y1} x2={tick.x2} y2={tick.y2}
-          stroke={`rgba(255,68,68,${tick.opacity})`} strokeWidth={tick.strokeWidth} strokeLinecap="round" />
+        <line
+          key={tick.key}
+          x1={tick.x1}
+          y1={tick.y1}
+          x2={tick.x2}
+          y2={tick.y2}
+          stroke="#ff1111"
+          strokeWidth={tick.strokeWidth}
+          strokeLinecap="round"
+        />
       ))}
     </svg>
   );

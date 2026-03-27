@@ -1,35 +1,20 @@
 export default function ClockHands({ unitRotation, minuteRotation, secondRotation }) {
   return (
-    <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full">
-      {/* Minute hand - red, stops before outer ticks */}
-      <line
-        x1="200" y1="200"
-        x2={200 + Math.sin(minuteRotation * Math.PI / 180) * 172}
-        y2={200 - Math.cos(minuteRotation * Math.PI / 180) * 172}
-        stroke="#ff4444" strokeWidth="3" strokeLinecap="round"
-      />
-      {/* Hour hand - green, stops before outer ticks */}
-      <line
-        x1="200" y1="200"
-        x2={200 + Math.sin(unitRotation * Math.PI / 180) * 155}
-        y2={200 - Math.cos(unitRotation * Math.PI / 180) * 155}
-        stroke="#00ff88" strokeWidth="3" strokeLinecap="round"
-      />
-      {/* Second hand - neon orange/yellow */}
-      <line
-        x1="200" y1="200"
-        x2={200 + Math.sin(secondRotation * Math.PI / 180) * 168}
-        y2={200 - Math.cos(secondRotation * Math.PI / 180) * 168}
-        stroke="url(#secondGradient)" strokeWidth="2" strokeLinecap="round"
-      />
-      <defs>
-        <linearGradient id="secondGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#ff8800" />
-          <stop offset="100%" stopColor="#ffff00" />
-        </linearGradient>
-      </defs>
-      {/* Single center dot */}
-      <circle cx="200" cy="200" r="5" fill="#00ff88" />
-    </svg>
+    <>
+      <div className="absolute inset-0" style={{ transform: `rotate(${minuteRotation}deg)` }}>
+        <div className="absolute left-1/2 top-[13%] h-[37%] w-[2px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#ff1111] via-[#ff1111] to-transparent" />
+      </div>
+
+      <div className="absolute inset-0" style={{ transform: `rotate(${unitRotation}deg)` }}>
+        <div className="absolute left-1/2 top-[1%] h-[40%] w-[2.5px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#00ff88] via-[#00ff88] to-transparent" />
+      </div>
+
+      <div className="absolute inset-0 opacity-90" style={{ transform: `rotate(${secondRotation}deg)` }}>
+        <div className="absolute left-1/2 top-[27%] h-[23%] w-[1.5px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#00ff88] via-[#00ff88] to-transparent" />
+      </div>
+
+      <div className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#00ff88] bg-[#080808] animate-pulse" />
+      <div className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#00ff88] animate-pulse" />
+    </>
   );
 }
