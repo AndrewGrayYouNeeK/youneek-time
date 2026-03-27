@@ -1,40 +1,20 @@
-// 12 green major ticks (hour positions)
-const MAJOR_TICKS = Array.from({ length: 12 }, (_, index) => {
-  const angle = (index / 12) * Math.PI * 2 - Math.PI / 2;
-  const innerRadius = 176;
-  const outerRadius = 190;
-
-  return {
-    x1: 200 + Math.cos(angle) * innerRadius,
-    y1: 200 + Math.sin(angle) * innerRadius,
-    x2: 200 + Math.cos(angle) * outerRadius,
-    y2: 200 + Math.sin(angle) * outerRadius,
-    strokeWidth: 1.4,
-    stroke: '#10b981',
-    opacity: 0.9,
-    key: `major-${index}`
-  };
-});
-
-// 60 red minor ticks (minute positions)
-const MINOR_TICKS = Array.from({ length: 60 }, (_, index) => {
+const OUTER_TICKS = Array.from({ length: 60 }, (_, index) => {
   const angle = (index / 60) * Math.PI * 2 - Math.PI / 2;
-  const innerRadius = 182;
+  const isMajor = index % 5 === 0;
   const outerRadius = 190;
+  const innerRadius = isMajor ? 178 : 184; // 12px vs 6px length
 
   return {
-    x1: 200 + Math.cos(angle) * innerRadius,
-    y1: 200 + Math.sin(angle) * innerRadius,
-    x2: 200 + Math.cos(angle) * outerRadius,
-    y2: 200 + Math.sin(angle) * outerRadius,
-    strokeWidth: 0.7,
-    stroke: '#ef4444',
-    opacity: 0.7,
-    key: `minor-${index}`
+    x1: 200 + Math.cos(angle) * outerRadius,
+    y1: 200 + Math.sin(angle) * outerRadius,
+    x2: 200 + Math.cos(angle) * innerRadius,
+    y2: 200 + Math.sin(angle) * innerRadius,
+    strokeWidth: isMajor ? 2 : 1,
+    stroke: isMajor ? '#00ff88' : '#ff4444',
+    opacity: 1,
+    key: `tick-${index}`
   };
 });
-
-const OUTER_TICKS = [...MAJOR_TICKS, ...MINOR_TICKS];
 
 const INNER_TICKS = Array.from({ length: 100 }, (_, index) => {
   const angle = (index / 100) * Math.PI * 2 - Math.PI / 2;
