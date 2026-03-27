@@ -1,16 +1,16 @@
 const OUTER_TICKS = Array.from({ length: 24 }, (_, index) => {
   const angle = (index / 24) * Math.PI * 2 - Math.PI / 2;
   const isMajor = index % 3 === 0;
-  const innerRadius = isMajor ? 146 : 160;
-  const outerRadius = 188;
+  const innerRadius = isMajor ? 156 : 168;
+  const outerRadius = 190;
 
   return {
     x1: 200 + Math.cos(angle) * innerRadius,
     y1: 200 + Math.sin(angle) * innerRadius,
     x2: 200 + Math.cos(angle) * outerRadius,
     y2: 200 + Math.sin(angle) * outerRadius,
-    strokeWidth: isMajor ? 2.2 : 1.1,
-    opacity: isMajor ? 0.95 : 0.78,
+    strokeWidth: isMajor ? 1.7 : 0.9,
+    opacity: isMajor ? 0.95 : 0.72,
     key: `outer-${index}`
   };
 });
