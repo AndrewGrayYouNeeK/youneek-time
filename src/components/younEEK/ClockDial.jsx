@@ -11,7 +11,6 @@ export default function ClockDial({ time }) {
       className="relative aspect-square w-full max-w-[32rem]"
     >
       <div className="absolute inset-0 rounded-full border border-emerald-200/20 bg-[#050505]" />
-      <div className="absolute inset-[9.5%] rounded-full border border-red-400/35" />
       <ClockTicks />
       <ClockLabels />
       <ClockHands
