@@ -58,23 +58,23 @@ export default function LiveMoonPhaseCard() {
         <div className="absolute inset-y-0 bg-[#020202]/92 blur-[2px]" style={shadowStyle} />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-[#6EF695]">Live moon phase</p>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-emerald-300/90">Live moon phase</p>
           <h2 className="mt-3 font-mono text-2xl uppercase tracking-[0.22em] text-white sm:text-3xl">{phaseName}</h2>
         </div>
       </div>
 
       <div className="grid gap-4 px-5 py-5 sm:grid-cols-3 sm:px-6 sm:py-6">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/60">Illumination</p>
-          <p className="mt-2 font-mono text-lg text-white/95">{moon?.illumination}%</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/35">Illumination</p>
+          <p className="mt-2 font-mono text-lg text-white/85">{moon?.illumination}%</p>
         </div>
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/60">Moonrise</p>
-          <p className="mt-2 font-mono text-lg text-white/95">{moon?.moonrise || '—'}</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/35">Moonrise</p>
+          <p className="mt-2 font-mono text-lg text-white/85">{moon?.moonrise || '—'}</p>
         </div>
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/60">Moonset</p>
-          <p className="mt-2 font-mono text-lg text-white/95">{moon?.moonset || '—'}</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/35">Moonset</p>
+          <p className="mt-2 font-mono text-lg text-white/85">{moon?.moonset || '—'}</p>
         </div>
       </div>
     </section>

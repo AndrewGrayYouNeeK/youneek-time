@@ -8,13 +8,13 @@ const polarPoint = (radius, angleDeg) => {
 
 const outerLabels = [
   { label: '0', angle: 0, color: 'rgba(248,113,113,1)', size: 18, offsetY: 8 },
-  { label: '03', angle: 45, color: 'rgba(110,246,149,1)', size: 15 },
-  { label: '06', angle: 90, color: 'rgba(110,246,149,1)', size: 15 },
-  { label: '09', angle: 135, color: 'rgba(110,246,149,1)', size: 15 },
-  { label: '12', angle: 180, color: 'rgba(110,246,149,1)', size: 15 },
-  { label: '15', angle: 225, color: 'rgba(110,246,149,1)', size: 15 },
-  { label: '18', angle: 270, color: 'rgba(110,246,149,1)', size: 15 },
-  { label: '21', angle: 315, color: 'rgba(110,246,149,1)', size: 15 }
+  { label: '03', angle: 45, color: 'rgba(134,239,172,1)', size: 15 },
+  { label: '06', angle: 90, color: 'rgba(134,239,172,1)', size: 15 },
+  { label: '09', angle: 135, color: 'rgba(134,239,172,1)', size: 15 },
+  { label: '12', angle: 180, color: 'rgba(134,239,172,1)', size: 15 },
+  { label: '15', angle: 225, color: 'rgba(134,239,172,1)', size: 15 },
+  { label: '18', angle: 270, color: 'rgba(134,239,172,1)', size: 15 },
+  { label: '21', angle: 315, color: 'rgba(134,239,172,1)', size: 15 }
 ];
 
 const innerLabels = [
