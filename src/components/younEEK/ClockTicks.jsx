@@ -26,7 +26,7 @@ const INNER_TICKS = Array.from({ length: 100 }, (_, index) => {
     y1: 200 + Math.sin(angle) * innerRadius,
     x2: 200 + Math.cos(angle) * outerRadius,
     y2: 200 + Math.sin(angle) * outerRadius,
-    strokeWidth: isMajor ? 1.5 : 0.8,
+    strokeWidth: isMajor ? 2.2 : 0.8,
     opacity: isMajor ? 0.92 : 0.48,
     key: `inner-${index}`
   };
