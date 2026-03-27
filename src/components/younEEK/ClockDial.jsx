@@ -1,23 +1,32 @@
 import { motion } from 'framer-motion';
-import ClockTicks from './ClockTicks';
 import ClockLabels from './ClockLabels';
-import ClockHands from './ClockHands';
+import '@/styles/clock.css';
 
 export default function ClockDial({ time }) {
+  const generateTicks = () => {
+    const ticks = [];
+    for (let i = 0; i < 72; i++) {
+      const rotation = (i * 5);
+      ticks.push(
+        <div key={i} className="tick" style={{ transform: `rotate(${rotation}deg)` }} />
+      );
+    }
+    return ticks;
+  };
+
   return (
     <motion.div
       animate={{ scale: [1, 1.01, 1.018, 1.008, 1] }}
       transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
       className="relative aspect-square w-full max-w-[32rem]"
     >
-      <div className="absolute inset-0 rounded-full border border-emerald-200/20 bg-[#050505]" />
-      <ClockTicks />
-      <ClockLabels />
-      <ClockHands
-        unitRotation={time.unitRotation}
-        minuteRotation={time.minuteRotation}
-        secondRotation={time.secondRotation}
-      />
+      <div className="clock">
+        {generateTicks()}
+        <div className="hand units" style={{ transform: `rotate(${time.unitRotation}deg)` }} />
+        <div className="hand minutes" style={{ transform: `rotate(${time.minuteRotation}deg)` }} />
+        <div className="center-dot" />
+        <ClockLabels />
+      </div>
     </motion.div>
   );
 }
