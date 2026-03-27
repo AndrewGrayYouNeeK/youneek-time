@@ -15,7 +15,7 @@ const sections = [
   },
   {
     title: 'The Analog Face',
-    body: 'The outer ring maps the 24-hour day while the inner ring divides each YouNeek hour into 100 smaller ticks. The hands move continuously so the dial feels fluid and precise.'
+    body: 'The outer ring maps the 24-hour day while the inner ring divides each YouNeek hour into 100 smaller minutes. The hands move continuously so the dial feels fluid and precise.'
   }
 ];
 

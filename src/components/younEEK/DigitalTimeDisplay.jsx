@@ -22,7 +22,7 @@ export default function DigitalTimeDisplay({ time }) {
         <DigitCard digit={digits[2]} />
         <DigitCard digit={digits[3]} />
       </div>
-      <p className="mt-4 font-mono text-xs uppercase tracking-[0.35em] text-white/40">Units / 100</p>
+      <p className="mt-4 font-mono text-xs uppercase tracking-[0.35em] text-white/40">Hours / 100</p>
     </div>
   );
 }
