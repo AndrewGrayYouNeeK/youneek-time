@@ -35,6 +35,7 @@ const INNER_TICKS = Array.from({ length: 100 }, (_, index) => {
 export default function ClockTicks() {
   return (
     <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full">
+      <circle cx="200" cy="200" r="162" stroke="#ff1111" strokeWidth="3.5" fill="none" />
       {OUTER_TICKS.map((tick) => (
         <line
           key={tick.key}
