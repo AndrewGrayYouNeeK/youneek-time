@@ -10,9 +10,9 @@ export default function ClockDial({ time }) {
       transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
       className="relative aspect-square w-full max-w-[32rem]"
     >
-      <div className="absolute inset-0 rounded-full border border-[#6EF695]/20 bg-[#040404] shadow-[0_0_20px_rgba(110,246,149,0.12)]" />
-      <div className="absolute inset-[2.5%] rounded-full border border-[#6EF695]/30" />
-      <div className="absolute inset-[11.5%] rounded-full border border-red-500/30" />
+      <div className="absolute inset-0 rounded-full border border-emerald-200/20 bg-[#050505]" />
+      <div className="absolute inset-[2.5%] rounded-full border border-emerald-300/35" />
+      <div className="absolute inset-[11.5%] rounded-full border border-red-400/35" />
       <div className="absolute inset-[15.5%] rounded-full border border-white/8" />
       <ClockTicks />
       <ClockLabels />

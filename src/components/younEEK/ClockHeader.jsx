@@ -21,10 +21,11 @@ export default function ClockHeader({ now, time }) {
 
   return (
     <div className="text-center">
-      <p className="font-mono text-2xl uppercase tracking-[0.45em] text-[#6EF695] [text-shadow:0_0_10px_rgba(110,246,149,0.45)] sm:text-3xl">YouNeeK Time</p>
-      <p className="mt-2 text-center font-mono text-[10px] uppercase tracking-[0.3em] text-white/45">by: Andrew Gray</p>
-      <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/60">• {standardTime} {getUtcOffsetLabel(now)}</p>
-      <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[#6EF695]/85">YouNeek army time • {armyHours}:{armyMinutes}:{armySeconds}</p>
+      <p className="font-mono text-2xl uppercase tracking-[0.45em] text-[#6EF695] sm:text-3xl">YouNeeK Time</p>
+      <p className="mt-2 text-center font-mono text-[10px] uppercase tracking-[0.3em] text-red-200">by Andrew Gray</p>
+      
+      <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/75">Regular time • {standardTime} {getUtcOffsetLabel(now)}</p>
+      <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-emerald-200">YouNeek army time • {armyHours}:{armyMinutes}:{armySeconds}</p>
     </div>);
 
 }

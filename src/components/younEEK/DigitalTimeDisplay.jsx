@@ -4,8 +4,8 @@ function pad(value) {
 
 function DigitCard({ digit }) {
   return (
-    <div className="flex h-24 w-[4.8rem] items-center justify-center rounded-2xl border border-[#6EF695]/15 bg-[#111111] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04),0_0_18px_rgba(110,246,149,0.08)] sm:h-28 sm:w-[5.4rem]">
-      <span className="font-mono text-6xl font-semibold tracking-[0.08em] text-[#6EF695] [text-shadow:0_0_14px_rgba(110,246,149,0.35)] sm:text-7xl">{digit}</span>
+    <div className="flex h-24 w-[4.8rem] items-center justify-center rounded-2xl border border-emerald-200/15 bg-[#101010] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04),0_0_24px_rgba(74,222,128,0.08)] sm:h-28 sm:w-[5.4rem]">
+      <span className="font-mono text-6xl font-semibold tracking-[0.08em] text-[#6EF695] sm:text-7xl">{digit}</span>
     </div>
   );
 }
@@ -18,11 +18,11 @@ export default function DigitalTimeDisplay({ time }) {
       <div className="flex items-center justify-center gap-2 sm:gap-3">
         <DigitCard digit={digits[0]} />
         <DigitCard digit={digits[1]} />
-        <div className="px-1 font-mono text-5xl text-[#6EF695] [text-shadow:0_0_14px_rgba(110,246,149,0.35)] sm:text-6xl">•</div>
+        <div className="px-1 font-mono text-5xl text-red-400 sm:text-6xl">•</div>
         <DigitCard digit={digits[2]} />
         <DigitCard digit={digits[3]} />
       </div>
-      <p className="mt-4 font-mono text-xs uppercase tracking-[0.35em] text-white/35">Units / 100</p>
+      <p className="mt-4 font-mono text-xs uppercase tracking-[0.35em] text-white/70">Hours / 100</p>
     </div>
   );
 }
