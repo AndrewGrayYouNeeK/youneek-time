@@ -54,7 +54,7 @@ export default function ClockTicks() {
           y1={tick.y1}
           x2={tick.x2}
           y2={tick.y2}
-          stroke="#ff0000"
+          stroke="#ff5555"
           strokeWidth={tick.strokeWidth}
           strokeLinecap="round"
         />
