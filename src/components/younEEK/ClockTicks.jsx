@@ -1,5 +1,5 @@
-const OUTER_TICKS = Array.from({ length: 60 }, (_, index) => {
-  const angle = (index / 60) * Math.PI * 2 - Math.PI / 2;
+const OUTER_TICKS = Array.from({ length: 24 }, (_, index) => {
+  const angle = (index / 24) * Math.PI * 2 - Math.PI / 2;
   const isMajor = index % 5 === 0;
   const outerRadius = 198;
   const innerRadius = isMajor ? 184 : 191;
