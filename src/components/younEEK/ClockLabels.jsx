@@ -36,7 +36,7 @@ export default function ClockLabels() {
       </text>
 
       {outerLabels.map((item) => {
-        const point = polarPoint(182, item.angle);
+        const point = polarPoint(170, item.angle);
         return (
           <text
             key={item.label}
