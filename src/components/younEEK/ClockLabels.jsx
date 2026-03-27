@@ -55,7 +55,7 @@ export default function ClockLabels() {
       })}
 
       {innerLabels.map((item) => {
-        const point = polarPoint(118, item.angle);
+        const point = polarPoint(140, item.angle);
         return (
           <text
             key={item.label}
@@ -63,7 +63,7 @@ export default function ClockLabels() {
             y={point.y}
             textAnchor="middle"
             dominantBaseline="middle"
-            fill="rgba(248,113,113,0.95)"
+            fill="#ff0055"
             fontSize="10"
             fontFamily="monospace"
             fontWeight="700"
