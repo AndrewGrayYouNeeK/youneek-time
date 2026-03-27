@@ -52,7 +52,7 @@ export default function LiveMoonPhaseCard() {
   }
 
   return (
-    <section className="w-full overflow-hidden rounded-[1.9rem] border border-white/10 bg-[#0d0d0d] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02),0_0_28px_rgba(0,0,0,0.35)]">
+    <section className="w-full overflow-hidden rounded-[1.9rem] border border-white/10 bg-[#111111] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02),0_0_24px_rgba(255,255,255,0.04)]">
       <div className="relative h-64 w-full overflow-hidden bg-[#050505] sm:h-72">
         <img src={moonPhoto} alt={phaseName} className="h-full w-full object-cover opacity-90" />
         <div className="absolute inset-y-0 bg-[#020202]/92 blur-[2px]" style={shadowStyle} />
