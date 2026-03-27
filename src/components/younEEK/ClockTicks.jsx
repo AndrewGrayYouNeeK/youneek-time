@@ -1,7 +1,7 @@
 // 12 green major ticks (hour positions)
 const MAJOR_TICKS = Array.from({ length: 12 }, (_, index) => {
   const angle = (index / 12) * Math.PI * 2 - Math.PI / 2;
-  const innerRadius = 176;
+  const innerRadius = 168;
   const outerRadius = 190;
 
   return {
@@ -9,9 +9,9 @@ const MAJOR_TICKS = Array.from({ length: 12 }, (_, index) => {
     y1: 200 + Math.sin(angle) * innerRadius,
     x2: 200 + Math.cos(angle) * outerRadius,
     y2: 200 + Math.sin(angle) * outerRadius,
-    strokeWidth: 1.4,
-    stroke: '#10b981',
-    opacity: 0.9,
+    strokeWidth: 1.5,
+    stroke: '#00ff88',
+    opacity: 1,
     key: `major-${index}`
   };
 });
@@ -19,7 +19,7 @@ const MAJOR_TICKS = Array.from({ length: 12 }, (_, index) => {
 // 60 red minor ticks (minute positions)
 const MINOR_TICKS = Array.from({ length: 60 }, (_, index) => {
   const angle = (index / 60) * Math.PI * 2 - Math.PI / 2;
-  const innerRadius = 182;
+  const innerRadius = 185;
   const outerRadius = 190;
 
   return {
@@ -27,9 +27,9 @@ const MINOR_TICKS = Array.from({ length: 60 }, (_, index) => {
     y1: 200 + Math.sin(angle) * innerRadius,
     x2: 200 + Math.cos(angle) * outerRadius,
     y2: 200 + Math.sin(angle) * outerRadius,
-    strokeWidth: 0.7,
+    strokeWidth: 0.5,
     stroke: '#ef4444',
-    opacity: 0.7,
+    opacity: 0.65,
     key: `minor-${index}`
   };
 });
