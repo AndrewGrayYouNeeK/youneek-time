@@ -1,6 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
 import { base44 } from '@/api/base44Client';
 
+function getCalculatedMoonCycle() {
+  const now = new Date();
+  const newMoon = new Date(2026, 2, 18);
+  const days = (now - newMoon) / (1000 * 60 * 60 * 24);
+  const phase = ((days % 29.53) + 29.53) % 29.53;
+  return Math.round(50 * (1 - Math.cos((2 * Math.PI * phase) / 29.53)));
+}
+
 const moonPhoto = 'https://thumbs.dreamstime.com/b/waxing-gibbous-moon-copy-space-dark-night-sky-detailed-photograph-showing-visible-lunar-craters-surface-features-444805795.jpg';
 
 function normalizePhase(phase) {
@@ -33,7 +41,8 @@ export default function LiveMoonPhaseCard() {
   }, []);
 
   const phaseName = useMemo(() => normalizePhase(moon?.phase), [moon?.phase]);
-  const illumination = Number(moon?.illumination || 0);
+  const calculatedCycle = getCalculatedMoonCycle();
+  const illumination = calculatedCycle;
   const shadowWidth = `${100 - illumination}%`;
   const shadowStyle = phaseName.includes('Waning') || phaseName === 'Last Quarter'
     ? { width: shadowWidth, left: 0 }
@@ -59,7 +68,7 @@ export default function LiveMoonPhaseCard() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
           <h2 className="font-mono text-2xl uppercase tracking-[0.22em] text-white sm:text-3xl">{phaseName}</h2>
-          <p className="mt-3 font-mono text-sm uppercase tracking-[0.28em] text-white/75">{moon?.illumination}% cycle</p>
+          <p className="mt-3 font-mono text-sm uppercase tracking-[0.28em] text-white/75">{calculatedCycle}% cycle</p>
         </div>
       </div>
 
