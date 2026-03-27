@@ -6,8 +6,8 @@ import ClockHands from './ClockHands';
 export default function ClockDial({ time }) {
   return (
     <motion.div
-      animate={{ scale: [1, 1.01, 1.018, 1.008, 1] }}
-      transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+      animate={{ scale: [1, 1.02, 1.025, 1.01, 1] }}
+      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
       className="relative aspect-square w-full max-w-[32rem]"
     >
       <div className="absolute inset-0 rounded-full border border-emerald-200/20 bg-[#050505]" />

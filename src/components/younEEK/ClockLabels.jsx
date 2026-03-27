@@ -64,6 +64,7 @@ export default function ClockLabels() {
             textAnchor="middle"
             dominantBaseline="middle"
             fill="#ff1111"
+            opacity="0.85"
             fontSize="10"
             fontFamily="monospace"
             fontWeight="700"
