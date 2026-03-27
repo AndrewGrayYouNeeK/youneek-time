@@ -5,7 +5,7 @@ function pad(value) {
 function DigitCard({ digit }) {
   return (
     <div className="flex h-24 w-[4.8rem] items-center justify-center rounded-2xl border border-emerald-200/15 bg-[#101010] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04),0_0_24px_rgba(74,222,128,0.08)] sm:h-28 sm:w-[5.4rem]">
-      <span className="font-mono text-6xl font-semibold tracking-[0.08em] text-emerald-300 sm:text-7xl">{digit}</span>
+      <span className="font-mono text-6xl font-semibold tracking-[0.08em] text-[#6EF695] sm:text-7xl">{digit}</span>
     </div>
   );
 }
