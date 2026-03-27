@@ -49,7 +49,6 @@ export default function ClockLabels() {
             fontSize={item.size}
             fontFamily="monospace"
             fontWeight="700"
-            style={{ filter: `drop-shadow(0 0 10px ${item.color})` }}
           >
             {item.label}
           </text>
@@ -69,7 +68,6 @@ export default function ClockLabels() {
             fontSize="10"
             fontFamily="monospace"
             fontWeight="700"
-            style={{ filter: 'drop-shadow(0 0 8px rgba(248,113,113,0.8))' }}
           >
             {item.label}
           </text>
