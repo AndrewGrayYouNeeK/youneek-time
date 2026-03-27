@@ -23,9 +23,9 @@ export default function ClockHeader({ now, time }) {
     <div className="text-center">
       <p className="font-mono text-2xl uppercase tracking-[0.45em] text-emerald-300 sm:text-3xl">YouNeeK Time</p>
       <p className="mt-2 text-center font-mono text-[10px] uppercase tracking-[0.3em] text-red-200">by Andrew Gray</p>
-      <p className="mt-2 font-mono text-xs uppercase tracking-[0.25em] text-white/60">Base-10 daily clock</p>
+      
       <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/75">Regular time • {standardTime} {getUtcOffsetLabel(now)}</p>
       <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-emerald-200">YouNeek army time • {armyHours}:{armyMinutes}:{armySeconds}</p>
-    </div>
-  );
+    </div>);
+
 }
