@@ -19,7 +19,7 @@ const INNER_TICKS = Array.from({ length: 100 }, (_, index) => {
   const angle = (index / 100) * Math.PI * 2 - Math.PI / 2;
   const isMajor = index % 10 === 0;
   const innerRadius = 150;
-  const outerRadius = isMajor ? 162 : 157;
+  const outerRadius = 162;
 
   return {
     x1: 200 + Math.cos(angle) * innerRadius,
