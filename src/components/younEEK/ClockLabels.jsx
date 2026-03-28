@@ -1,21 +1,23 @@
+const GREEN = '#39ff14';
+const RED   = '#ff2222';
+
 const polarPoint = (radius, angleDeg) => {
   const angle = (angleDeg - 90) * (Math.PI / 180);
-  return {
-    x: 200 + Math.cos(angle) * radius,
-    y: 200 + Math.sin(angle) * radius
-  };
+  return { x: 200 + Math.cos(angle) * radius, y: 200 + Math.sin(angle) * radius };
 };
 
+// Outer labels: hour markers for 24h ring (green)
 const outerLabels = [
-  { label: '03', angle: 45, color: '#00ff11', size: 12 },
-  { label: '06', angle: 90, color: '#00ff11', size: 12 },
-  { label: '09', angle: 135, color: '#00ff11', size: 12 },
-  { label: '12', angle: 180, color: '#00ff11', size: 12 },
-  { label: '15', angle: 225, color: '#00ff11', size: 12 },
-  { label: '18', angle: 270, color: '#00ff11', size: 12 },
-  { label: '21', angle: 315, color: '#00ff11', size: 12 }
+  { label: '03', angle: 45 },
+  { label: '06', angle: 90 },
+  { label: '09', angle: 135 },
+  { label: '12', angle: 180 },
+  { label: '15', angle: 225 },
+  { label: '18', angle: 270 },
+  { label: '21', angle: 315 },
 ];
 
+// Inner labels: YouNeeK minute markers (red), skip 0 since we have the tick "0" label
 const innerLabels = [
   { label: '10', angle: 36 },
   { label: '20', angle: 72 },
@@ -25,50 +27,37 @@ const innerLabels = [
   { label: '60', angle: 216 },
   { label: '70', angle: 252 },
   { label: '80', angle: 288 },
-  { label: '90', angle: 324 }
+  { label: '90', angle: 324 },
 ];
 
 export default function ClockLabels() {
   return (
     <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full">
-      <text x="200" y="212" textAnchor="middle" fill="rgba(255,255,255,0.04)" fontSize="28" fontFamily="monospace" letterSpacing="4">
+      {/* Faint YOUNEEK watermark — placeholder for center image */}
+      <text x="200" y="212" textAnchor="middle" fill="rgba(255,255,255,0.03)"
+        fontSize="26" fontFamily="monospace" letterSpacing="4">
         YOUNEEK
       </text>
 
       {outerLabels.map((item) => {
-        const point = polarPoint(174, item.angle);
+        const p = polarPoint(174, item.angle);
         return (
-          <text
-            key={item.label}
-            x={point.x}
-            y={point.y + (item.offsetY || 0)}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fill={item.color}
-            fontSize={item.size}
-            fontFamily="monospace"
-            fontWeight="700"
-          >
+          <text key={item.label} x={p.x} y={p.y}
+            textAnchor="middle" dominantBaseline="middle"
+            fill={GREEN} fontSize="12" fontFamily="monospace" fontWeight="700"
+            style={{ filter: `drop-shadow(0 0 4px ${GREEN}99)` }}>
             {item.label}
           </text>
         );
       })}
 
       {innerLabels.map((item) => {
-        const point = polarPoint(140, item.angle);
+        const p = polarPoint(140, item.angle);
         return (
-          <text
-            key={item.label}
-            x={point.x}
-            y={point.y}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fill="#ff1111"
-            opacity="0.85"
-            fontSize="10"
-            fontFamily="monospace"
-            fontWeight="700"
-          >
+          <text key={item.label} x={p.x} y={p.y}
+            textAnchor="middle" dominantBaseline="middle"
+            fill={RED} fontSize="10" fontFamily="monospace" fontWeight="700"
+            style={{ filter: `drop-shadow(0 0 3px ${RED}88)` }}>
             {item.label}
           </text>
         );

@@ -1,31 +1,48 @@
 function getUtcOffsetLabel(now) {
   const offsetMinutes = -now.getTimezoneOffset();
   const sign = offsetMinutes >= 0 ? '+' : '-';
-  const absoluteMinutes = Math.abs(offsetMinutes);
-  const hours = Math.floor(absoluteMinutes / 60);
-  const minutes = absoluteMinutes % 60;
-
-  return `UTC${sign}${hours}${minutes ? `:${String(minutes).padStart(2, '0')}` : ''}`;
+  const abs = Math.abs(offsetMinutes);
+  const h = Math.floor(abs / 60);
+  const m = abs % 60;
+  return `UTC${sign}${h}${m ? `:${String(m).padStart(2, '0')}` : ''}`;
 }
 
+function pad(v) { return String(v).padStart(2, '0'); }
+
 export default function ClockHeader({ now, time }) {
+  // Regular 12-hour time
   const standardTime = new Intl.DateTimeFormat('en-US', {
     hour: 'numeric',
     minute: '2-digit',
-    hour12: true
+    second: '2-digit',
+    hour12: true,
   }).format(now);
 
-  const armyHours = String(now.getHours()).padStart(2, '0');
-  const armyMinutes = String(time.minutes).padStart(2, '0');
-  const armySeconds = String(time.seconds).padStart(2, '0');
+  // YouNeeK Army Time: 24h real hours, 100-minute hours, 100-second minutes
+  const armyStr = `${pad(time.armyHours)}:${pad(time.armyMinutes)}:${pad(time.armySeconds)}`;
+
+  // YouNeeK 12h Army Time: same but 12h format
+  const army12Str = `${pad(time.hours12)}:${pad(time.armyMinutes)}:${pad(time.armySeconds)} ${time.ampm}`;
 
   return (
     <div className="text-center">
-      <p className="font-mono text-2xl uppercase tracking-[0.45em] text-emerald-300 sm:text-3xl">YouNeeK Time</p>
-      <p className="mt-2 text-center font-mono text-[10px] uppercase tracking-[0.3em] text-red-300/80">by Andrew Gray</p>
-      <p className="mt-2 font-mono text-xs uppercase tracking-[0.25em] text-white/34">Base-10 daily clock</p>
-      <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/45">Regular time • {standardTime} {getUtcOffsetLabel(now)}</p>
-      <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-emerald-300/75">YouNeek army time • {armyHours}:{armyMinutes}:{armySeconds}</p>
+      <p className="font-mono text-2xl uppercase tracking-[0.45em] text-[#39ff14] sm:text-3xl" style={{textShadow:'0 0 12px #39ff14aa'}}>YouNeeK Time</p>
+      <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[#ff2222]" style={{textShadow:'0 0 8px #ff222299'}}>by Andrew Gray</p>
+      <p className="mt-2 font-mono text-xs uppercase tracking-[0.25em] text-white/30">Base-10 daily clock</p>
+
+      <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/45">
+        Regular time • {standardTime} {getUtcOffsetLabel(now)}
+      </p>
+
+      {/* YouNeeK Army Time 24h */}
+      <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[#39ff14]/75" style={{textShadow:'0 0 6px #39ff1455'}}>
+        YouNeeK Army Time (24h) • {armyStr}
+      </p>
+
+      {/* YouNeeK Army Time 12h */}
+      <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-[#39ff14]/55" style={{textShadow:'0 0 6px #39ff1433'}}>
+        YouNeeK Army Time (12h) • {army12Str}
+      </p>
     </div>
   );
 }

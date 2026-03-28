@@ -1,63 +1,75 @@
-const OUTER_TICKS = Array.from({ length: 24 }, (_, index) => {
-  const angle = (index / 24) * Math.PI * 2 - Math.PI / 2;
-  const isMajor = index % 3 === 0;
-  const outerRadius = 198;
-  const innerRadius = isMajor ? 184 : 191;
+const GREEN = '#39ff14';
+const RED   = '#ff2222';
 
+// Outer 24 ticks — green — for the 24-hour ring
+const OUTER_TICKS = Array.from({ length: 24 }, (_, i) => {
+  const angle = (i / 24) * Math.PI * 2 - Math.PI / 2;
+  const isMajor = i % 3 === 0;
+  const outerR = 198;
+  const innerR = isMajor ? 183 : 191;
   return {
-    x1: 200 + Math.cos(angle) * outerRadius,
-    y1: 200 + Math.sin(angle) * outerRadius,
-    x2: 200 + Math.cos(angle) * innerRadius,
-    y2: 200 + Math.sin(angle) * innerRadius,
+    x1: 200 + Math.cos(angle) * outerR,
+    y1: 200 + Math.sin(angle) * outerR,
+    x2: 200 + Math.cos(angle) * innerR,
+    y2: 200 + Math.sin(angle) * innerR,
     strokeWidth: isMajor ? 2.5 : 1,
-    stroke: '#00ff88',
-    key: `tick-${index}`
+    key: `outer-${i}`,
   };
 });
 
-const INNER_TICKS = Array.from({ length: 100 }, (_, index) => {
-  const angle = (index / 100) * Math.PI * 2 - Math.PI / 2;
-  const isMajor = index % 10 === 0;
-  const innerRadius = isMajor ? 150 : 156;
-  const outerRadius = 162;
-
+// Inner 100 ticks — red — for YouNeeK minutes ring
+const INNER_TICKS = Array.from({ length: 100 }, (_, i) => {
+  const angle = (i / 100) * Math.PI * 2 - Math.PI / 2;
+  const isMajor = i % 10 === 0;
+  const innerR = isMajor ? 150 : 156;
+  const outerR = 162;
   return {
-    x1: 200 + Math.cos(angle) * innerRadius,
-    y1: 200 + Math.sin(angle) * innerRadius,
-    x2: 200 + Math.cos(angle) * outerRadius,
-    y2: 200 + Math.sin(angle) * outerRadius,
+    x1: 200 + Math.cos(angle) * innerR,
+    y1: 200 + Math.sin(angle) * innerR,
+    x2: 200 + Math.cos(angle) * outerR,
+    y2: 200 + Math.sin(angle) * outerR,
     strokeWidth: isMajor ? 2.2 : 0.8,
-    opacity: 1,
-    key: `inner-${index}`
+    key: `inner-${i}`,
   };
 });
 
 export default function ClockTicks() {
   return (
     <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full">
-      <circle cx="200" cy="200" r="162" stroke="rgba(255,255,255,0.3)" strokeWidth="0.2" fill="none" />
-      {OUTER_TICKS.map((tick) => (
+      {/* Subtle guide ring */}
+      <circle cx="200" cy="200" r="162" stroke="rgba(255,255,255,0.08)" strokeWidth="0.3" fill="none" />
+
+      {/* Red "0" label at 12 o'clock on the inner tick ring */}
+      <text
+        x="200" y="133"
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fill={RED}
+        fontSize="11"
+        fontFamily="monospace"
+        fontWeight="900"
+        style={{ filter: `drop-shadow(0 0 4px ${RED})` }}
+      >
+        0
+      </text>
+
+      {/* Outer green ticks */}
+      {OUTER_TICKS.map((t) => (
         <line
-          key={tick.key}
-          x1={tick.x1}
-          y1={tick.y1}
-          x2={tick.x2}
-          y2={tick.y2}
-          stroke={tick.stroke}
-          strokeWidth={tick.strokeWidth}
-          strokeLinecap="round"
+          key={t.key}
+          x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2}
+          stroke={GREEN} strokeWidth={t.strokeWidth} strokeLinecap="round"
+          style={{ filter: `drop-shadow(0 0 3px ${GREEN}88)` }}
         />
       ))}
-      {INNER_TICKS.map((tick) => (
+
+      {/* Inner red ticks */}
+      {INNER_TICKS.map((t) => (
         <line
-          key={tick.key}
-          x1={tick.x1}
-          y1={tick.y1}
-          x2={tick.x2}
-          y2={tick.y2}
-          stroke="#ff1111"
-          strokeWidth={tick.strokeWidth}
-          strokeLinecap="round"
+          key={t.key}
+          x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2}
+          stroke={RED} strokeWidth={t.strokeWidth} strokeLinecap="round"
+          style={{ filter: `drop-shadow(0 0 2px ${RED}66)` }}
         />
       ))}
     </svg>

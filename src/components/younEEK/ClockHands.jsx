@@ -1,20 +1,82 @@
+// NEON colors
+const GREEN = '#39ff14';
+const RED   = '#ff2222';
+
 export default function ClockHands({ unitRotation, minuteRotation, secondRotation }) {
   return (
-    <>
-      <div className="absolute inset-0" style={{ transform: `rotate(${minuteRotation}deg)` }}>
-        <div className="absolute left-1/2 top-[13%] h-[37%] w-[2px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#ff1111] via-[#ff1111] to-transparent" />
-      </div>
+    <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full" style={{ overflow: 'visible' }}>
+      {/* ── Green hour hand ── 
+          Tip ends just below the inner red tick ring (r≈160).
+          Symmetrical: tail goes 12% past center, tip at 38% from center.
+          So total length spans center ±, drawn as a line through center.
+          Hand tip: top at r=118 from center (below red ring start ~162)
+          Hand tail: r=30 past center opposite side */}
+      <g transform={`rotate(${unitRotation}, 200, 200)`}>
+        {/* tail (short counterweight below center) */}
+        <line
+          x1="200" y1="200"
+          x2="200" y2="230"
+          stroke={GREEN} strokeWidth="3.5" strokeLinecap="round"
+          style={{ filter: `drop-shadow(0 0 6px ${GREEN})` }}
+        />
+        {/* main hand pointing up — tip stops at y=82 (118px from center, r=118) */}
+        <line
+          x1="200" y1="200"
+          x2="200" y2="82"
+          stroke={GREEN} strokeWidth="3.5" strokeLinecap="round"
+          style={{ filter: `drop-shadow(0 0 6px ${GREEN})` }}
+        />
+      </g>
 
-      <div className="absolute inset-0" style={{ transform: `rotate(${unitRotation}deg)` }}>
-        <div className="absolute left-1/2 top-[1%] h-[40%] w-[2.5px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#00ff88] via-[#00ff88] to-transparent" />
-      </div>
+      {/* ── Red minute hand ── 
+          Reaches into inner red tick area. Tip at r=148 (y=52).
+          Tail at r=22 below center. Thinner. */}
+      <g transform={`rotate(${minuteRotation}, 200, 200)`}>
+        <line
+          x1="200" y1="200"
+          x2="200" y2="222"
+          stroke={RED} strokeWidth="2.5" strokeLinecap="round"
+          style={{ filter: `drop-shadow(0 0 5px ${RED})` }}
+        />
+        <line
+          x1="200" y1="200"
+          x2="200" y2="52"
+          stroke={RED} strokeWidth="2.5" strokeLinecap="round"
+          style={{ filter: `drop-shadow(0 0 5px ${RED})` }}
+        />
+      </g>
 
-      <div className="absolute inset-0 opacity-90" style={{ transform: `rotate(${secondRotation}deg)` }}>
-        <div className="absolute left-1/2 top-[27%] h-[23%] w-[1.5px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#00ff88] via-[#00ff88] to-transparent" />
-      </div>
+      {/* ── Second hand ── thick, darkest black body, bright neon tip */}
+      <g transform={`rotate(${secondRotation}, 200, 200)`}>
+        {/* tail */}
+        <line
+          x1="200" y1="200"
+          x2="200" y2="218"
+          stroke="#000000" strokeWidth="4" strokeLinecap="round"
+        />
+        <line
+          x1="200" y1="200"
+          x2="200" y2="218"
+          stroke={GREEN} strokeWidth="1.5" strokeLinecap="round"
+          style={{ filter: `drop-shadow(0 0 4px ${GREEN})` }}
+        />
+        {/* main — short, thick, black with green edge */}
+        <line
+          x1="200" y1="200"
+          x2="200" y2="100"
+          stroke="#000000" strokeWidth="4" strokeLinecap="round"
+        />
+        <line
+          x1="200" y1="200"
+          x2="200" y2="100"
+          stroke={GREEN} strokeWidth="1.5" strokeLinecap="round"
+          style={{ filter: `drop-shadow(0 0 4px ${GREEN})` }}
+        />
+      </g>
 
-      <div className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#00ff88] bg-[#080808] animate-pulse" />
-      <div className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#00ff88] animate-pulse" />
-    </>
+      {/* ── Center dot — solid bright neon green, no hollow ring ── */}
+      <circle cx="200" cy="200" r="5" fill={GREEN}
+        style={{ filter: `drop-shadow(0 0 8px ${GREEN}) drop-shadow(0 0 4px ${GREEN})` }} />
+    </svg>
   );
 }
