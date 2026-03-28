@@ -1,39 +1,27 @@
-**Welcome to your Base44 project** 
+# YouNeeK Time
 
-**About**
+A minimal, stylish world clock and time widget — YouNeeK branded.
 
-View and Edit  your app on [Base44.com](http://Base44.com) 
+## About
 
-This project contains everything you need to run your app locally.
+YouNeeK Time is a clean, dark-themed clock application with a custom YouNeeK design. Displays current time with elegant styling, configurable settings, and a widget mode for embedding or home screen use.
 
-**Edit the code in your local development environment**
+## Features
 
-Any change pushed to the repo will also be reflected in the Base44 Builder.
+- **YouNeeK Clock** — Custom-designed clock face with YouNeeK branding
+- **Widget Mode** — Compact embed-ready version for dashboards or home screens
+- **Settings** — Configure display preferences and time zones
+- **Dark Theme** — Deep black background with green accent glow
 
-**Prerequisites:** 
+## Running Locally
 
-1. Clone the repository using the project's Git URL 
-2. Navigate to the project directory
-3. Install dependencies: `npm install`
-4. Create an `.env.local` file and set the right environment variables
-
-```
-VITE_BASE44_APP_ID=your_app_id
-VITE_BASE44_APP_BASE_URL=your_backend_url
-
-e.g.
-VITE_BASE44_APP_ID=cbef744a8545c389ef439ea6
-VITE_BASE44_APP_BASE_URL=https://my-to-do-list-81bfaad7.base44.app
+```bash
+git clone https://github.com/AndrewGrayYouNeeK/youneek-time.git
+cd youneek-time
+npm install
+npm run dev
 ```
 
-Run the app: `npm run dev`
+## Built By
 
-**Publish your changes**
-
-Open [Base44.com](http://Base44.com) and click on Publish.
-
-**Docs & Support**
-
-Documentation: [https://docs.base44.com/Integrations/Using-GitHub](https://docs.base44.com/Integrations/Using-GitHub)
-
-Support: [https://app.base44.com/support](https://app.base44.com/support)
+Andrew Gray — YouNeeK
