@@ -96,12 +96,18 @@ module.exports = {
   				'53%': { opacity: '0.1' },
   				'54%': { opacity: '0' },
   				'100%': { opacity: '0' }
+  			},
+  			'lightning': {
+  				'0%': { textShadow: '0 0 20px #000000, 0 0 40px #000000, 0 0 60px #00000099, 0 0 0px #39ff1400' },
+  				'50%': { textShadow: '0 0 20px #000000, 0 0 40px #000000, 0 0 60px #00000099, 0 0 40px #39ff14ff' },
+  				'100%': { textShadow: '0 0 20px #000000, 0 0 40px #000000, 0 0 60px #00000099, 0 0 0px #39ff1400' }
   			}
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-  			'glitch': 'glitch 1.2s ease-out'
+  			'glitch': 'glitch 1.2s ease-out',
+  			'lightning': 'lightning 2s ease-in-out infinite'
   		}
   	}
   },
