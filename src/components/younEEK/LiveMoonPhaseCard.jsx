@@ -85,13 +85,13 @@ export default function LiveMoonPhaseCard() {
       <div className="absolute inset-0 bg-gradient-to-t from-[#101010] from-35% via-[#101010]/80 via-55% to-transparent pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 px-6 sm:px-8 pt-44 pb-8">
+      <div className="relative z-10 px-6 sm:px-8 pt-44 pb-8 flex flex-col items-center text-center">
         <div className="mb-8">
           <p className="font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.4em] text-[#39ff14] drop-shadow-[0_0_8px_rgba(57,255,20,0.4)]">Live moon phase</p>
           <h2 className="mt-3 font-mono text-xl sm:text-2xl font-bold uppercase tracking-[0.35em] text-white drop-shadow-lg">{phaseName}</h2>
         </div>
         
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 items-center">
           <div>
             <p className="font-mono text-[9px] font-bold uppercase tracking-[0.3em] text-white/40">Illumination</p>
             <p className="mt-1 font-mono text-sm tracking-widest text-white/80">{moon?.illumination || 0}%</p>
