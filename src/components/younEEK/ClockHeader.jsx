@@ -25,23 +25,29 @@ export default function ClockHeader({ now, time }) {
   const army12Str = `${pad(time.hours12)}:${pad(time.armyMinutes)}:${pad(time.armySeconds)} ${time.ampm}`;
 
   return (
-    <div className="header relative">
-      <svg className="lightning-bg" viewBox="0 0 1200 200" preserveAspectRatio="xMidYMid slice">
+    <div className="storm-header">
+      <svg className="lightning-layer" viewBox="0 0 1400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <defs>
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="3" result="blur"/>
-            <feFlood floodColor="#fff" floodOpacity="0.4"/>
-            <feComposite in2="blur" operator="in"/>
+          <filter id="lightning-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="4" result="blur1"/>
+            <feGaussianBlur stdDeviation="12" result="blur2"/>
             <feMerge>
-              <feMergeNode/>
+              <feMergeNode in="blur2"/>
+              <feMergeNode in="blur1"/>
               <feMergeNode in="SourceGraphic"/>
             </feMerge>
           </filter>
+          <filter id="afterglow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="8" result="soft"/>
+          </filter>
         </defs>
-        <path className="bolt" d="M300 50 L320 80 L290 120 L310 160 L280 190" filter="url(#glow)"/>
-        <path className="bolt" d="M600 30 L620 70 L590 110 L620 150 L580 180" filter="url(#glow)"/>
-        <path className="bolt" d="M900 60 L920 90 L890 130 L920 170 L880 200" filter="url(#glow)"/>
+        <path id="bolt1" className="bolt" d="M180 20 L220 90 L190 140 L240 180 L200 250 L230 290" filter="url(#lightning-glow)"/>
+        <path id="bolt2" className="bolt" d="M520 10 L560 70 L510 110 L570 160 L530 200 L580 240 L540 280" filter="url(#lightning-glow)"/>
+        <path id="bolt2-branch" className="bolt branch" d="M560 70 L590 40 L610 80" filter="url(#lightning-glow)"/>
+        <path id="bolt3" className="bolt" d="M920 40 L960 100 L910 150 L970 190 L930 240 L980 270" filter="url(#lightning-glow)"/>
+        <path id="bolt4" className="bolt distant" d="M1150 80 L1180 110 L1140 160 L1190 190" filter="url(#afterglow)"/>
       </svg>
+      <h1 className="youneek-title">Youneek</h1>
       <div className="text-center relative z-10">
       <p className="font-mono text-5xl sm:text-6xl uppercase tracking-[0.45em] text-black font-bold animate-lightning">YouNeeK Time</p>
       <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[#ff2222]" style={{textShadow:'0 0 8px #ff222299'}}>by Andrew Gray</p>
