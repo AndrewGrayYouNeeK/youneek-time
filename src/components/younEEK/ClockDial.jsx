@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 import ClockTicks from './ClockTicks';
 import ClockLabels from './ClockLabels';
 import ClockHands from './ClockHands';
@@ -7,6 +8,14 @@ import ClockHands from './ClockHands';
 const CENTER_IMAGE = 'https://media.base44.com/images/public/69c46a76857b7906981251c6/1f25e836d_IMG_0681.png';
 
 export default function ClockDial({ time }) {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (navigator.vibrate) {
+        navigator.vibrate([100, 100, 100]);
+      }
+    }, 600);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <motion.div
       animate={{ scale: [1, 1.018, 1] }}
