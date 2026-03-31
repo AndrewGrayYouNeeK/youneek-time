@@ -57,7 +57,7 @@ export default function ClockHeader({ now, time }) {
       </svg>
       <div className="text-center relative z-10">
       <p className="font-mono text-5xl sm:text-6xl uppercase tracking-[0.45em] text-black font-bold animate-lightning">YouNeeK Time</p>
-      <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[#ff2222]" style={{textShadow:'0 0 8px #ff222299'}}>by Andrew Gray</p>
+      <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.3em] text-black font-bold animate-lightning">by Andrew Gray</p>
 
       {/* Time displays — Regular, YouNeeK Army (24h), YouNeeK Time (12h) */}
       <div className="mt-12 space-y-1">
