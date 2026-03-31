@@ -3,19 +3,39 @@ import LockScreenWidget from '@/components/LockScreenWidget';
 import { getDecimalTime } from '@/lib/decimalTime';
 
 export default function WidgetShowcase() {
-  const [time, setTime] = useState(() => getDecimalTime());
+  const [now, setNow] = useState(() => new Date());
+  const [time, setTime] = useState(() => getDecimalTime(now));
+  const [isGlitching, setIsGlitching] = useState(false);
+  const [lastHour, setLastHour] = useState(now.getHours());
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
-      setTime(getDecimalTime());
+      const currentNow = new Date();
+      setNow(currentNow);
+      setTime(getDecimalTime(currentNow));
     }, 100);
 
     return () => window.clearInterval(intervalId);
   }, []);
 
+  useEffect(() => {
+    const currentHour = now.getHours();
+    if (currentHour !== lastHour) {
+      setLastHour(currentHour);
+      setIsGlitching(true);
+      const glitchTimer = setTimeout(() => setIsGlitching(false), 1200);
+      return () => clearTimeout(glitchTimer);
+    }
+  }, [now, lastHour]);
+
+  const handleTestGlitch = () => {
+    setIsGlitching(true);
+    setTimeout(() => setIsGlitching(false), 1200);
+  };
+
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-8">
-      <div className="text-center">
+    <div className={`mx-auto flex w-full max-w-5xl flex-col items-center gap-8 ${isGlitching ? 'animate-glitch' : ''}`}>
+      <div className={`text-center transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
         <p className="text-xs uppercase tracking-[0.45em] text-white/40">Widget preview</p>
         <h2 className="mt-3 text-3xl font-light tracking-[0.2em] text-white sm:text-4xl">Lock screen set</h2>
         <p className="mt-3 text-sm text-white/55">Three live widget sizes inside a glassy iPhone-style preview.</p>
@@ -30,14 +50,21 @@ export default function WidgetShowcase() {
           </div>
 
           <div className="space-y-3">
-            <LockScreenWidget size="large" time={time} />
+            <LockScreenWidget size="large" time={time} isGlitching={isGlitching} />
             <div className="grid grid-cols-2 gap-3">
-              <LockScreenWidget size="medium" time={time} />
-              <LockScreenWidget size="small" time={time} />
+              <LockScreenWidget size="medium" time={time} isGlitching={isGlitching} />
+              <LockScreenWidget size="small" time={time} isGlitching={isGlitching} />
             </div>
           </div>
         </div>
       </div>
+
+      <button 
+        onClick={handleTestGlitch} 
+        className="mt-4 px-4 py-2 text-xs uppercase tracking-widest text-white/30 hover:text-white/70 border border-white/10 rounded-full transition-colors"
+      >
+        Test Burnout Effect
+      </button>
     </div>
   );
 }

@@ -25,7 +25,7 @@ const SIZE_CONFIG = {
   }
 };
 
-export default function LockScreenWidget({ time, size = 'medium' }) {
+export default function LockScreenWidget({ time, size = 'medium', isGlitching }) {
   const config = SIZE_CONFIG[size] || SIZE_CONFIG.medium;
 
   return (
@@ -34,9 +34,9 @@ export default function LockScreenWidget({ time, size = 'medium' }) {
       transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
       className={`w-full border border-white/10 bg-white/5 shadow-[0_0_50px_rgba(34,211,238,0.08)] backdrop-blur-xl ${config.wrapper}`}
     >
-      <div className="flex items-center gap-4">
-        <div className={config.dialWrap}>
-          <ClockDial time={time} compact />
+      <div className={`flex items-center gap-4 transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
+        <div className={`${config.dialWrap} ${isGlitching ? 'animate-glitch opacity-100' : ''}`}>
+          <ClockDial time={time} compact isGlitching={isGlitching} />
         </div>
         <div className="min-w-0 flex-1">
           <p className="text-[10px] uppercase tracking-[0.35em] text-white/45">{config.title}</p>
