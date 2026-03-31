@@ -98,16 +98,19 @@ module.exports = {
   				'100%': { opacity: '0' }
   			},
   			'lightning': {
-  				'0%': { textShadow: '0 0 20px #000000, 0 0 40px #000000, 0 0 60px #00000099, 0 0 0px #39ff1400' },
-  				'50%': { textShadow: '0 0 20px #000000, 0 0 40px #000000, 0 0 60px #00000099, 0 0 40px #39ff14ff' },
-  				'100%': { textShadow: '0 0 20px #000000, 0 0 40px #000000, 0 0 60px #00000099, 0 0 0px #39ff1400' }
+  				'0%': { color: '#000000', textShadow: '0 0 0px #ffffff00' },
+  				'45%': { color: '#000000', textShadow: '0 0 0px #ffffff00' },
+  				'48%': { color: '#ffffff', textShadow: '0 0 20px #ffffff, 0 0 40px #ffffff, 0 0 80px #ffffff99' },
+  				'52%': { color: '#ffffff', textShadow: '0 0 20px #ffffff, 0 0 40px #ffffff, 0 0 80px #ffffff99' },
+  				'55%': { color: '#000000', textShadow: '0 0 0px #ffffff00' },
+  				'100%': { color: '#000000', textShadow: '0 0 0px #ffffff00' }
   			}
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
   			'glitch': 'glitch 1.2s ease-out',
-  			'lightning': 'lightning 2s ease-in-out infinite'
+  			'lightning': 'lightning 3.5s ease-in-out infinite'
   		}
   	}
   },
