@@ -26,7 +26,7 @@ export default function ClockHeader({ now, time }) {
 
   return (
     <div className="text-center">
-      <p className="font-mono text-5xl sm:text-6xl uppercase tracking-[0.45em] text-black font-bold" style={{textShadow:'0 0 20px #39ff14, 0 0 40px #39ff14, 0 0 60px #39ff14cc'}}>YouNeeK Time</p>
+      <p className="font-mono text-5xl sm:text-6xl uppercase tracking-[0.45em] text-black font-bold" style={{textShadow:'0 0 20px #000000, 0 0 40px #000000, 0 0 60px #00000099'}}>YouNeeK Time</p>
       <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[#ff2222]" style={{textShadow:'0 0 8px #ff222299'}}>by Andrew Gray</p>
 
 
