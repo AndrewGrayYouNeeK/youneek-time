@@ -86,6 +86,9 @@ module.exports = {
   				'8%': { opacity: '1', filter: 'brightness(1.5)' },
   				'10%': { opacity: '1', filter: 'brightness(5)' },
   				'12%': { opacity: '0', filter: 'brightness(0)' },
+  				'14%': { opacity: '1', filter: 'brightness(2)' },
+  				'16%': { opacity: '0.15', filter: 'brightness(0.5)' },
+  				'50%': { opacity: '0', filter: 'brightness(0)' },
   				'85%': { opacity: '0', filter: 'brightness(0)' },
   				'88%': { opacity: '0.5', filter: 'brightness(1)' },
   				'90%': { opacity: '0', filter: 'brightness(0)' },
@@ -108,7 +111,7 @@ module.exports = {
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-  			'glitch': 'glitch 2s ease-out',
+  			'glitch': 'glitch 3s ease-out',
   			'lightning': 'lightning 3.5s ease-in-out infinite'
   		}
   	}

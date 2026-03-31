@@ -23,7 +23,7 @@ export default function YouNeekClock() {
     if (currentHour !== lastHour) {
       setLastHour(currentHour);
       setIsGlitching(true);
-      const glitchTimer = setTimeout(() => setIsGlitching(false), 2000);
+      const glitchTimer = setTimeout(() => setIsGlitching(false), 3000);
       return () => clearTimeout(glitchTimer);
     }
   }, [now, lastHour]);
@@ -32,7 +32,7 @@ export default function YouNeekClock() {
 
   const handleTestGlitch = () => {
     setIsGlitching(true);
-    setTimeout(() => setIsGlitching(false), 2000);
+    setTimeout(() => setIsGlitching(false), 3000);
   };
 
   return (
