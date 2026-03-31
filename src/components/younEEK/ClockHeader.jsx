@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react';
+
 function getUtcOffsetLabel(now) {
   const offsetMinutes = -now.getTimezoneOffset();
   const sign = offsetMinutes >= 0 ? '+' : '-';
@@ -10,6 +12,34 @@ function getUtcOffsetLabel(now) {
 function pad(v) { return String(v).padStart(2, '0'); }
 
 export default function ClockHeader({ now, time }) {
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    // Thunder sound timings for each bolt strike
+    const timings = [
+      { delay: 576 },  // bolt-1 first strike
+      { delay: 2975 }, // bolt-2 first strike
+      { delay: 5642 }, // bolt-3 first strike
+      { delay: 7200 }, // cycle repeats
+    ];
+
+    const playThunder = () => {
+      if (audioRef.current) {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play().catch(() => {});
+      }
+    };
+
+    const timers = timings.map(timing => 
+      setInterval(playThunder, 7200 + timing.delay)
+    );
+
+    timers.forEach((timer, idx) => {
+      setTimeout(() => playThunder(), timings[idx].delay);
+    });
+
+    return () => timers.forEach(clearInterval);
+  }, []);
   // Regular 12-hour time
   const standardTime = new Intl.DateTimeFormat('en-US', {
     hour: 'numeric',
@@ -26,6 +56,11 @@ export default function ClockHeader({ now, time }) {
 
   return (
     <div className="header relative">
+      <audio 
+        ref={audioRef} 
+        src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" 
+        preload="auto"
+      />
       <svg className="lightning-bg" viewBox="0 0 1200 200" preserveAspectRatio="xMidYMid slice">
         <defs>
           <filter id="glow">
