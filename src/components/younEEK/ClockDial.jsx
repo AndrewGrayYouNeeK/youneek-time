@@ -19,7 +19,7 @@ export default function ClockDial({ time }) {
       {/* Center image — fades in/out with the breathing animation */}
       {CENTER_IMAGE && (
         <div
-          className="absolute inset-[17%] rounded-full overflow-hidden z-10"
+          className="absolute inset-[19%] rounded-full overflow-hidden z-10"
           style={{ pointerEvents: 'none' }}
         >
           <img src={CENTER_IMAGE} alt="center" className="w-full h-full object-cover opacity-70" />
