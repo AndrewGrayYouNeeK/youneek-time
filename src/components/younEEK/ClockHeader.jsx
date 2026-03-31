@@ -11,18 +11,13 @@ function pad(v) { return String(v).padStart(2, '0'); }
 
 export default function ClockHeader({ now, time }) {
   // Regular 12-hour time
-  const standardTime = new Intl.DateTimeFormat('en-US', {
-    hour: 'numeric',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: true,
-  }).format(now);
+  const standardTime = `${time.hours12}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
 
   // YouNeeK Army Time: 24h real hours, 100-minute hours, 100-second minutes
   const armyStr = `${pad(time.armyHours)}:${pad(time.armyMinutes)}:${pad(time.armySeconds)}`;
 
   // YouNeeK 12h Army Time: same but 12h format
-  const army12Str = `${pad(time.hours12)}:${pad(time.armyMinutes)}:${pad(time.armySeconds)} ${time.ampm}`;
+  const army12Str = `${pad(time.hours12)}:${pad(time.armyMinutes)}:${pad(time.armySeconds)}`;
 
   return (
     <div className="header relative">
