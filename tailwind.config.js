@@ -79,8 +79,16 @@ module.exports = {
   				}
   			},
   			'glitch': {
-  				'0%, 100%': { opacity: '1', textShadow: '0 0 10px currentColor' },
-  				'50%': { opacity: '0.3', textShadow: '0 0 20px currentColor, 0 0 5px rgba(0,0,0,0.8)' }
+  				'0%': { opacity: '0' },
+  				'15%': { opacity: '1' },
+  				'18%': { opacity: '0' },
+  				'42%': { opacity: '1' },
+  				'44%': { opacity: '0' },
+  				'58%': { opacity: '1' },
+  				'61%': { opacity: '0' },
+  				'83%': { opacity: '1' },
+  				'87%': { opacity: '0' },
+  				'100%': { opacity: '0' }
   			}
   		},
   		animation: {
