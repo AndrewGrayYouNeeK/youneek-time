@@ -50,6 +50,16 @@ export default function YouNeekClock() {
       <div className={`w-full ${isGlitching ? 'animate-glitch' : ''}`}>
         <ClockDial time={time} isGlitching={isGlitching} />
       </div>
+      
+      <div className="flex justify-center w-full">
+        <button 
+          onClick={handleTestGlitch} 
+          className="px-6 py-3 text-xs uppercase tracking-widest text-[#39ff14]/70 hover:text-[#39ff14] border border-[#39ff14]/20 hover:border-[#39ff14]/50 rounded-full transition-all bg-black/50 backdrop-blur-sm shadow-[0_0_15px_rgba(57,255,20,0.1)] hover:shadow-[0_0_20px_rgba(57,255,20,0.2)]"
+        >
+          Test Burnout Effect
+        </button>
+      </div>
+
       <div className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
         <DayProgressBar time={time} />
       </div>
@@ -59,12 +69,6 @@ export default function YouNeekClock() {
       <div className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
         <AboutSection />
       </div>
-      <button 
-        onClick={handleTestGlitch} 
-        className="mt-4 px-4 py-2 text-xs uppercase tracking-widest text-white/30 hover:text-white/70 border border-white/10 rounded-full transition-colors"
-      >
-        Test Burnout Effect
-      </button>
     </div>
   );
 }

@@ -6,7 +6,6 @@ import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import Index from '@/pages/Index';
-import Widget from '@/pages/Widget';
 import Settings from '@/pages/Settings';
 import Header from '@/components/Header';
 import BottomTab from '@/components/BottomTab';
@@ -58,7 +57,6 @@ const AuthenticatedApp = () => {
         <Routes location={location} key={location.pathname}>
           {/* Add your page Route elements here */}
           <Route path="/" element={<PageTransition><Index /></PageTransition>} />
-          <Route path="/widget" element={<PageTransition><Widget /></PageTransition>} />
           <Route path="/settings" element={<PageTransition><Settings /></PageTransition>} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

@@ -6,7 +6,6 @@ export default function BottomTab() {
 
   const tabs = [
     { path: '/', icon: Clock, label: 'Clock' },
-    { path: '/widget', icon: Smartphone, label: 'Widget' },
     { path: '/settings', icon: Settings, label: 'Settings' },
   ];
 
