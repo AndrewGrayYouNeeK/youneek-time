@@ -155,3 +155,26 @@
   65% { opacity: 0.5; }
   67%, 100% { opacity: 0; }
 }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 1; }
+}
+
+.star-layer-1 {
+  background-image: radial-gradient(1px 1px at 20px 30px, #ffffff, transparent), radial-gradient(1px 1px at 40px 70px, #ffffff, transparent), radial-gradient(1px 1px at 50px 160px, #ffffff, transparent), radial-gradient(1px 1px at 90px 40px, #ffffff, transparent), radial-gradient(1px 1px at 130px 80px, #ffffff, transparent), radial-gradient(1px 1px at 160px 120px, #ffffff, transparent);
+  background-size: 200px 200px;
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+.star-layer-2 {
+  background-image: radial-gradient(1.5px 1.5px at 10px 10px, #ffffff, transparent), radial-gradient(1.5px 1.5px at 150px 150px, #ffffff, transparent), radial-gradient(1.5px 1.5px at 60px 170px, #ffffff, transparent), radial-gradient(1.5px 1.5px at 175px 45px, #ffffff, transparent);
+  background-size: 250px 250px;
+  animation: twinkle 4s infinite ease-in-out 1s;
+}
+
+.star-layer-3 {
+  background-image: radial-gradient(2px 2px at 80px 110px, #ffffff, transparent), radial-gradient(2px 2px at 120px 50px, #ffffff, transparent), radial-gradient(2px 2px at 30px 90px, #ffffff, transparent);
+  background-size: 300px 300px;
+  animation: twinkle 5s infinite ease-in-out 2s;
+}
