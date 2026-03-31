@@ -16,6 +16,17 @@ export default function YouNeekClock() {
     return () => window.clearInterval(id);
   }, []);
 
+  // Heartbeat vibration synced with breathing (6-second cycle)
+  useEffect(() => {
+    const vibratePattern = [100, 100, 100, 100]; // heartbeat pattern
+    const interval = setInterval(() => {
+      if (navigator.vibrate) {
+        navigator.vibrate(vibratePattern);
+      }
+    }, 6000); // every 6 seconds
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="mx-auto flex min-h-screen w-full max-w-[36rem] flex-col items-center gap-8 px-4 py-8 sm:gap-9 sm:py-10 bg-black">
       <ClockHeader now={now} time={time} />
