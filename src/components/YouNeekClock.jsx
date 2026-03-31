@@ -11,6 +11,7 @@ export default function YouNeekClock() {
   const [now, setNow] = useState(() => new Date());
   const time = getDecimalTime(now);
   const [isGlitching, setIsGlitching] = useState(false);
+  const [lastUnit, setLastUnit] = useState(time.units);
 
   useEffect(() => {
     const id = window.setInterval(() => setNow(new Date()), 16);
@@ -18,15 +19,14 @@ export default function YouNeekClock() {
   }, []);
 
   useEffect(() => {
-    const checkHour = () => {
-      const currentMinute = new Date().getMinutes();
-      const currentSecond = new Date().getSeconds();
-      setIsGlitching(currentMinute === 0 && currentSecond < 5);
-    };
-    checkHour();
-    const id = window.setInterval(checkHour, 1000);
-    return () => window.clearInterval(id);
-  }, []);
+    const newUnit = Math.floor(time.units);
+    if (newUnit !== lastUnit) {
+      setLastUnit(newUnit);
+      setIsGlitching(true);
+      const glitchTimer = setTimeout(() => setIsGlitching(false), 5000);
+      return () => clearTimeout(glitchTimer);
+    }
+  }, [time.units, lastUnit]);
 
   useEffect(() => {
     if (isGlitching && navigator.vibrate) {
