@@ -36,22 +36,22 @@ export default function YouNeekClock() {
 
   return (
     <div className={`mx-auto flex min-h-screen w-full max-w-[36rem] flex-col items-center gap-8 px-4 py-8 sm:gap-9 sm:py-10 transition-colors duration-100 ${isGlitching ? 'bg-black' : 'bg-black'}`} onClick={testVibrate}>
-      <div className={`w-full ${isGlitching ? 'hidden' : ''}`}>
+      <div className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
         <ClockHeader now={now} time={time} />
       </div>
-      <div className={`w-full ${isGlitching ? 'hidden' : ''}`}>
+      <div className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
         <DigitalTimeDisplay time={time} />
       </div>
       <div className={`w-full ${isGlitching ? 'animate-glitch' : ''}`}>
         <ClockDial time={time} />
       </div>
-      <div className={`w-full ${isGlitching ? 'hidden' : ''}`}>
+      <div className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
         <DayProgressBar time={time} />
       </div>
-      <div className={`w-full ${isGlitching ? 'hidden' : ''}`}>
+      <div className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
         <LiveMoonPhaseCard />
       </div>
-      <div className={`w-full ${isGlitching ? 'hidden' : ''}`}>
+      <div className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
         <AboutSection />
       </div>
     </div>
