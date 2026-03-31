@@ -19,10 +19,10 @@ export default function ClockHands({ unitRotation, minuteRotation, secondRotatio
           stroke={GREEN} strokeWidth="3.5" strokeLinecap="round"
           style={{ filter: `drop-shadow(0 0 6px ${GREEN})` }}
         />
-        {/* main hand pointing up — tip stops at y=82 (118px from center, r=118) */}
+        {/* main hand pointing up — tip stops right below small green ticks */}
         <line
           x1="200" y1="200"
-          x2="200" y2="82"
+          x2="200" y2="18"
           stroke={GREEN} strokeWidth="3.5" strokeLinecap="round"
           style={{ filter: `drop-shadow(0 0 6px ${GREEN})` }}
         />
