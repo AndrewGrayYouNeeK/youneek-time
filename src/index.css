@@ -112,7 +112,22 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   opacity: 0;
-  animation: strike 8s infinite;
+}
+
+.bolt-1 {
+  animation: strike1 7.2s infinite;
+}
+
+.bolt-2 {
+  animation: strike2 8.5s infinite;
+}
+
+.bolt-3 {
+  animation: strike3 9.1s infinite;
+}
+
+.bolt.branch {
+  stroke-width: 3;
 }
 
 @keyframes flash {
@@ -120,7 +135,23 @@
   5%, 25%, 45%, 65%, 85% { opacity: 0.6; }
 }
 
-@keyframes strike {
+@keyframes strike1 {
   0%, 100% { opacity: 0; }
-  5%, 25%, 45%, 65%, 85% { opacity: 1; }
+  8%, 10%, 12% { opacity: 1; }
+  11% { opacity: 0.5; }
+  13%, 100% { opacity: 0; }
+}
+
+@keyframes strike2 {
+  0%, 100% { opacity: 0; }
+  35%, 37%, 39% { opacity: 1; }
+  38% { opacity: 0.5; }
+  40%, 100% { opacity: 0; }
+}
+
+@keyframes strike3 {
+  0%, 100% { opacity: 0; }
+  62%, 64%, 66% { opacity: 1; }
+  65% { opacity: 0.5; }
+  67%, 100% { opacity: 0; }
 }
