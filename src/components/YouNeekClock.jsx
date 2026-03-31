@@ -19,14 +19,14 @@ export default function YouNeekClock() {
   }, []);
 
   useEffect(() => {
-    const newUnit = Math.floor(time.units);
-    if (newUnit !== lastUnit) {
-      setLastUnit(newUnit);
-      setIsGlitching(true);
-      const glitchTimer = setTimeout(() => setIsGlitching(false), 5000);
-      return () => clearTimeout(glitchTimer);
-    }
-  }, [time.units, lastUnit]);
+    const glitchTimer = setInterval(() => {
+      if (Math.random() < 0.001) {
+        setIsGlitching(true);
+        setTimeout(() => setIsGlitching(false), 5000);
+      }
+    }, 1000);
+    return () => clearInterval(glitchTimer);
+  }, []);
 
   useEffect(() => {
     if (isGlitching && navigator.vibrate) {
