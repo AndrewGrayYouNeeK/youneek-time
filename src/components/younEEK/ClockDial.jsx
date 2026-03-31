@@ -24,7 +24,7 @@ export default function ClockDial({ time, isGlitching }) {
           className="absolute inset-[12%] rounded-full overflow-hidden z-10"
           style={{ pointerEvents: 'none' }}
         >
-          <img src={CENTER_IMAGE} alt="center" className={`w-full h-full object-cover opacity-70 transition-opacity duration-100`} style={{ opacity: isGlitching ? 0 : 0.7 }} />
+          <img src={CENTER_IMAGE} alt="center" className="w-full h-full object-cover" style={{ opacity: isGlitching ? 0 : 0.7, transition: 'opacity 0.05s' }} />
         </motion.div>
       )}
 
