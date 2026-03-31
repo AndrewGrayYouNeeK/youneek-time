@@ -30,7 +30,7 @@ export default function ClockHeader({ now, time }) {
       <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[#ff2222]" style={{textShadow:'0 0 8px #ff222299'}}>by Andrew Gray</p>
 
 
-      <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/45">
+      <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-white/45">
         Regular time • {standardTime} {getUtcOffsetLabel(now)}
       </p>
 
