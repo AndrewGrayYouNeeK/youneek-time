@@ -40,7 +40,7 @@ export default function ClockLabels() {
       </text>
 
       {outerLabels.map((item) => {
-        const p = polarPoint(180, item.angle);
+        const p = polarPoint(170, item.angle);
         return (
           <text key={item.label} x={p.x} y={p.y}
             textAnchor="middle" dominantBaseline="middle"
