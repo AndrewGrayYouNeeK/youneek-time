@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { getDecimalTime } from '@/lib/decimalTime';
 import ClockHeader from '@/components/younEEK/ClockHeader';
 import DigitalTimeDisplay from '@/components/younEEK/DigitalTimeDisplay';
@@ -34,26 +35,49 @@ export default function YouNeekClock() {
     }
   }, [isGlitching]);
 
+  const GlitchElement = ({ children, delay }) => (
+    <motion.div
+      animate={isGlitching ? {
+        x: [0, Math.random() * 8 - 4, Math.random() * 8 - 4, 0],
+        y: [0, Math.random() * 8 - 4, Math.random() * 8 - 4, 0],
+        opacity: [1, Math.random() * 0.3 + 0.5, Math.random() * 0.3 + 0.5, 1],
+        scale: [1, 1 + Math.random() * 0.1, 1 + Math.random() * 0.1, 1],
+      } : {
+        x: 0,
+        y: 0,
+        opacity: 1,
+        scale: 1,
+      }}
+      transition={{
+        duration: 5,
+        delay,
+        times: [0, 0.2, 0.8, 1],
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+
   return (
-    <div className={`mx-auto flex min-h-screen w-full max-w-[36rem] flex-col items-center gap-8 px-4 py-8 sm:gap-9 sm:py-10 transition-colors duration-100 ${isGlitching ? 'bg-black' : 'bg-black'}`}>
-      <div className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
+    <div className="mx-auto flex min-h-screen w-full max-w-[36rem] flex-col items-center gap-8 px-4 py-8 sm:gap-9 sm:py-10 bg-black">
+      <GlitchElement delay={0}>
         <ClockHeader now={now} time={time} />
-      </div>
-      <div className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
+      </GlitchElement>
+      <GlitchElement delay={Math.random() * 0.3}>
         <DigitalTimeDisplay time={time} />
-      </div>
-      <div className={`w-full ${isGlitching ? 'animate-glitch' : ''}`}>
+      </GlitchElement>
+      <GlitchElement delay={Math.random() * 0.3}>
         <ClockDial time={time} />
-      </div>
-      <div className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
+      </GlitchElement>
+      <GlitchElement delay={Math.random() * 0.3}>
         <DayProgressBar time={time} />
-      </div>
-      <div className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
+      </GlitchElement>
+      <GlitchElement delay={Math.random() * 0.3}>
         <LiveMoonPhaseCard />
-      </div>
-      <div className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
+      </GlitchElement>
+      <GlitchElement delay={Math.random() * 0.3}>
         <AboutSection />
-      </div>
+      </GlitchElement>
     </div>
   );
 }
