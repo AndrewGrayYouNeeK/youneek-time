@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 function getUtcOffsetLabel(now) {
   const offsetMinutes = -now.getTimezoneOffset();
   const sign = offsetMinutes >= 0 ? '+' : '-';
@@ -10,6 +12,34 @@ function getUtcOffsetLabel(now) {
 function pad(v) { return String(v).padStart(2, '0'); }
 
 export default function ClockHeader({ now, time }) {
+  useEffect(() => {
+    const haptic = window.iosHaptics?.haptic;
+
+    if (!haptic) {
+      console.warn('Haptics not loaded');
+      return;
+    }
+
+    const bolts = document.querySelectorAll('.bolt:not(.branch)');
+
+    const handleAnimationStart = () => {
+      haptic();
+      setTimeout(() => haptic.confirm(), 80);
+    };
+
+    bolts.forEach(bolt => {
+      bolt.addEventListener('animationstart', handleAnimationStart);
+      bolt.addEventListener('animationiteration', handleAnimationStart);
+    });
+
+    return () => {
+      bolts.forEach(bolt => {
+        bolt.removeEventListener('animationstart', handleAnimationStart);
+        bolt.removeEventListener('animationiteration', handleAnimationStart);
+      });
+    };
+  }, []);
+
   // Regular 12-hour time
   const standardTime = `${time.hours12}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
 
