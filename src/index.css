@@ -91,3 +91,36 @@
     @apply select-none;
   }
 }
+
+.header {
+  height: 200px;
+  background: #000;
+  overflow: hidden;
+}
+
+.lightning-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: flash 8s infinite;
+}
+
+.bolt {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  animation: strike 8s infinite;
+}
+
+@keyframes flash {
+  0%, 20%, 40%, 60%, 80%, 100% { opacity: 0; }
+  5%, 25%, 45%, 65%, 85% { opacity: 0.6; }
+}
+
+@keyframes strike {
+  0%, 100% { opacity: 0; }
+  5%, 25%, 45%, 65%, 85% { opacity: 1; }
+}
