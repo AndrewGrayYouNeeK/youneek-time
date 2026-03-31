@@ -28,11 +28,7 @@ export default function YouNeekClock() {
     }
   }, [now, lastHour]);
 
-  useEffect(() => {
-    if (isGlitching && navigator.vibrate) {
-      navigator.vibrate([100, 50, 100, 300, 50, 100, 200]);
-    }
-  }, [isGlitching]);
+
 
   const handleTestGlitch = () => {
     setIsGlitching(true);
