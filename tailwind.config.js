@@ -98,12 +98,16 @@ module.exports = {
   				'100%': { opacity: '0' }
   			},
   			'lightning': {
-  				'0%': { color: '#000000', textShadow: '0 0 0px #ffffff00' },
-  				'45%': { color: '#000000', textShadow: '0 0 0px #ffffff00' },
-  				'48%': { color: '#000000', textShadow: '0 0 8px #ffffff, 0 0 16px #ffffff, 0 0 32px #ffffff, 0 0 64px #ffffff99' },
-  				'52%': { color: '#000000', textShadow: '0 0 8px #ffffff, 0 0 16px #ffffff, 0 0 32px #ffffff, 0 0 64px #ffffff99' },
-  				'55%': { color: '#000000', textShadow: '0 0 0px #ffffff00' },
-  				'100%': { color: '#000000', textShadow: '0 0 0px #ffffff00' }
+  				'0%': { color: '#000000', textShadow: '0 0 0px #ffffff00', filter: 'brightness(1)' },
+  				'35%': { color: '#000000', textShadow: '0 0 0px #ffffff00', filter: 'brightness(1)' },
+  				'38%': { color: '#000000', textShadow: '0 0 20px #ffffff, 0 0 40px #ffffff, 0 0 80px #ffffff, 0 0 120px #ffffffaa', filter: 'brightness(2.5)' },
+  				'40%': { color: '#000000', textShadow: '0 0 0px #ffffff00', filter: 'brightness(1)' },
+  				'42%': { color: '#000000', textShadow: '0 0 20px #ffffff, 0 0 40px #ffffff, 0 0 80px #ffffff, 0 0 120px #ffffffaa', filter: 'brightness(2.5)' },
+  				'44%': { color: '#000000', textShadow: '0 0 0px #ffffff00', filter: 'brightness(1)' },
+  				'46%': { color: '#000000', textShadow: '0 0 30px #ffffff, 0 0 60px #ffffff, 0 0 120px #ffffff, 0 0 200px #ffffffbb', filter: 'brightness(3)' },
+  				'49%': { color: '#000000', textShadow: '0 0 30px #ffffff, 0 0 60px #ffffff, 0 0 120px #ffffff, 0 0 200px #ffffffbb', filter: 'brightness(3)' },
+  				'51%': { color: '#000000', textShadow: '0 0 0px #ffffff00', filter: 'brightness(1)' },
+  				'100%': { color: '#000000', textShadow: '0 0 0px #ffffff00', filter: 'brightness(1)' }
   			}
   		},
   		animation: {
