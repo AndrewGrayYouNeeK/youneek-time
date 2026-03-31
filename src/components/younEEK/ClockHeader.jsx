@@ -31,7 +31,7 @@ export default function ClockHeader({ now, time }) {
 
 
       {/* Time displays — evenly spaced with intentional fade */}
-      <div className="mt-12 space-y-2">
+      <div className="mt-12 space-y-1">
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/30">
           Regular time • {standardTime.replace(' AM', '').replace(' PM', '')}
         </p>
