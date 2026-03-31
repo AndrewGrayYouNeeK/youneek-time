@@ -79,21 +79,19 @@ module.exports = {
   				}
   			},
   			'glitch': {
-  				'0%': { opacity: '1', filter: 'brightness(1) hue-rotate(0deg)' },
-  				'5%': { opacity: '0.2', filter: 'brightness(0.5)' },
-  				'10%': { opacity: '1', filter: 'brightness(3) hue-rotate(30deg)' },
-  				'12%': { opacity: '0', filter: 'brightness(0)' },
-  				'25%': { opacity: '1', filter: 'brightness(4) saturate(2)' },
-  				'28%': { opacity: '0.1', filter: 'brightness(0.2)' },
-  				'35%': { opacity: '0.8', filter: 'brightness(1.5)' },
+  				'0%': { opacity: '1', filter: 'brightness(1)' },
+  				'5%': { opacity: '1', filter: 'brightness(4) saturate(1.5)' },
+  				'10%': { opacity: '1', filter: 'brightness(8) saturate(2) contrast(1.5)' },
+  				'15%': { opacity: '0', filter: 'brightness(0)' },
   				'40%': { opacity: '0', filter: 'brightness(0)' },
-  				'60%': { opacity: '0', filter: 'brightness(0)' },
-  				'70%': { opacity: '0.5', filter: 'brightness(1.2)' },
-  				'75%': { opacity: '0', filter: 'brightness(0)' },
-  				'85%': { opacity: '0.8', filter: 'brightness(2) hue-rotate(-20deg)' },
-  				'90%': { opacity: '0', filter: 'brightness(0)' },
+  				'45%': { opacity: '0.2', filter: 'brightness(0.5)' },
+  				'50%': { opacity: '0', filter: 'brightness(0)' },
+  				'65%': { opacity: '0.5', filter: 'brightness(1.2)' },
+  				'70%': { opacity: '0', filter: 'brightness(0)' },
+  				'80%': { opacity: '0.8', filter: 'brightness(1.5)' },
+  				'85%': { opacity: '0', filter: 'brightness(0)' },
   				'95%': { opacity: '1', filter: 'brightness(2.5)' },
-  				'100%': { opacity: '1', filter: 'brightness(1) hue-rotate(0deg)' }
+  				'100%': { opacity: '1', filter: 'brightness(1)' }
   			},
   			'lightning': {
   				'0%': { color: '#000000', textShadow: '0 0 0px #ffffff00', filter: 'brightness(1)' },
