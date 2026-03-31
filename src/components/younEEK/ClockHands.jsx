@@ -1,6 +1,7 @@
 // NEON colors
 const GREEN = '#39ff14';
 const RED   = '#ff2222';
+const YELLOW = '#ffff00';
 
 export default function ClockHands({ unitRotation, minuteRotation, secondRotation }) {
   return (
@@ -57,10 +58,10 @@ export default function ClockHands({ unitRotation, minuteRotation, secondRotatio
         <line
           x1="200" y1="200"
           x2="200" y2="218"
-          stroke={GREEN} strokeWidth="1.5" strokeLinecap="round"
-          style={{ filter: `drop-shadow(0 0 4px ${GREEN})` }}
+          stroke={YELLOW} strokeWidth="1.5" strokeLinecap="round"
+          style={{ filter: `drop-shadow(0 0 4px ${YELLOW})` }}
         />
-        {/* main — short, thick, black with green edge */}
+        {/* main — short, thick, black with yellow edge */}
         <line
           x1="200" y1="200"
           x2="200" y2="100"
@@ -69,8 +70,8 @@ export default function ClockHands({ unitRotation, minuteRotation, secondRotatio
         <line
           x1="200" y1="200"
           x2="200" y2="100"
-          stroke={GREEN} strokeWidth="1.5" strokeLinecap="round"
-          style={{ filter: `drop-shadow(0 0 4px ${GREEN})` }}
+          stroke={YELLOW} strokeWidth="1.5" strokeLinecap="round"
+          style={{ filter: `drop-shadow(0 0 4px ${YELLOW})` }}
         />
       </g>
 
