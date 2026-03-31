@@ -19,8 +19,8 @@ export default function ClockDial({ time }) {
       {/* Center image — fades in/out with the breathing animation */}
       {CENTER_IMAGE && (
         <motion.div
-          animate={{ scale: [1, 1.1, 0.95, 1.1, 0.95, 1] }}
-          transition={{ duration: 0.6, repeat: Infinity, ease: 'easeInOut' }}
+          animate={{ rotate: [-1, 1, -1, 1, 0] }}
+          transition={{ duration: 0.15, repeat: Infinity, ease: 'linear' }}
           className="absolute inset-[8%] rounded-full overflow-hidden z-10"
           style={{ pointerEvents: 'none' }}
         >
