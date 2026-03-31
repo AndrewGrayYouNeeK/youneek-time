@@ -39,6 +39,9 @@ export default function ClockTicks() {
       {/* Subtle guide ring */}
       <circle cx="200" cy="200" r="162" stroke="rgba(255,255,255,1)" strokeWidth="0.3" fill="none" />
 
+      {/* Outer ring around green ticks */}
+      <circle cx="200" cy="200" r="199" stroke="rgba(255,255,255,1)" strokeWidth="0.3" fill="none" />
+
       {/* Red "0" label at 12 o'clock on the inner tick ring */}
       <text
         x="200" y="60"
