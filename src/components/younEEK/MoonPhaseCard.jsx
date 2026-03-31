@@ -1,6 +1,5 @@
 const SYNODIC_MONTH = 29.53058867;
 const KNOWN_NEW_MOON = Date.UTC(2000, 0, 6, 18, 14, 0);
-const MOON_IMAGE = 'https://media.base44.com/images/public/69c46a76857b7906981251c6/1f25e836d_IMG_0681.png';
 
 function getMoonData(now) {
   const daysSinceNewMoon = (now.getTime() - KNOWN_NEW_MOON) / 86400000;
@@ -32,8 +31,7 @@ export default function MoonPhaseCard({ now }) {
   return (
     <div className="mx-auto w-full max-w-[18rem] rounded-[1.6rem] border border-emerald-200/15 bg-[#101010] px-6 py-5 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04),0_0_26px_rgba(74,222,128,0.06)] text-center">
       <div className="flex flex-col items-center gap-4">
-        <div className="relative h-14 w-14 overflow-hidden rounded-full bg-[#101010] shadow-[0_0_28px_rgba(255,244,200,0.28)]">
-          <img src={MOON_IMAGE} alt="Moon" className="absolute inset-0 w-full h-full object-cover opacity-90" />
+        <div className="relative h-14 w-14 overflow-hidden rounded-full bg-[#e2e8f0] shadow-[0_0_28px_rgba(255,244,200,0.28)]">
           <div
             className="absolute inset-0 rounded-full bg-[#101010]"
             style={{ transform: `translateX(${moon.waxing ? -shadowOffset : shadowOffset}px)` }}
