@@ -31,7 +31,7 @@ export default function ClockHeader({ now, time }) {
 
 
       <p className="mt-12 font-mono text-[11px] uppercase tracking-[0.18em] text-white/45">
-        Regular time • {standardTime} {getUtcOffsetLabel(now)}
+        Regular time • {standardTime}
       </p>
 
       {/* YouNeeK Time */}
