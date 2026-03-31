@@ -60,7 +60,7 @@ export default function ClockHeader({ now, time }) {
       <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[#ff2222]" style={{textShadow:'0 0 8px #ff222299'}}>by Andrew Gray</p>
 
       {/* Time displays — Regular, YouNeeK Army (24h), YouNeeK Time (12h) */}
-      <div className="mt-6 space-y-1">
+      <div className="mt-12 space-y-1">
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/30">
           Regular Time • {standardTime}
         </p>
