@@ -41,7 +41,7 @@ export default function ClockTicks() {
 
       {/* Red "0" label at 12 o'clock on the inner tick ring */}
       <text
-        x="200" y="133"
+        x="200" y="110"
         textAnchor="middle"
         dominantBaseline="middle"
         fill={RED}
