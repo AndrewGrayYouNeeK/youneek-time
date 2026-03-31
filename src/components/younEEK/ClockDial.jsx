@@ -13,8 +13,8 @@ export default function ClockDial({ time, isGlitching }) {
       transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
       className="relative aspect-square w-full max-w-[32rem]"
     >
-      {/* Clock face — pure black */}
-      <div className="absolute inset-0 rounded-full border border-[#39ff14]/15 bg-black" />
+      {/* Clock face — transparent to let stars show through */}
+      <div className="absolute inset-0 rounded-full border border-[#39ff14]/15 bg-transparent" />
 
       {/* Center image — darkens when clock shrinks, brightens when it expands */}
       {CENTER_IMAGE && (

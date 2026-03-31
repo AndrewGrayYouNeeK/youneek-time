@@ -38,6 +38,9 @@ const INNER_TICKS = Array.from({ length: 100 }, (_, i) => {
 export default function ClockTicks() {
   return (
     <motion.svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full" animate={{ opacity: [1, 0.7, 1] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}>
+      {/* Black background between the green and red ticks */}
+      <circle cx="200" cy="200" r="172.5" stroke="black" strokeWidth="22" fill="none" />
+
       {/* Subtle guide ring */}
       <circle cx="200" cy="200" r="162" stroke="rgba(255,255,255,1)" strokeWidth="0.15" fill="none" />
 
