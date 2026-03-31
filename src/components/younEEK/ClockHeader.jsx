@@ -64,18 +64,18 @@ export default function ClockHeader({ now, time }) {
       <p className="font-mono text-5xl sm:text-6xl uppercase tracking-[0.45em] text-black font-bold animate-lightning">YouNeeK Time</p>
       <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[#ff2222]" style={{textShadow:'0 0 8px #ff222299'}}>by Andrew Gray</p>
 
-      {/* Time displays — evenly spaced with intentional fade */}
+      {/* Time displays — Regular, YouNeeK Army (24h), YouNeeK Time (12h) */}
       <div className="mt-12 space-y-1">
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/30">
-          Regular time • {standardTime}
+          Regular Time • {standardTime}
         </p>
 
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#2dd900]" style={{textShadow:'0 0 8px #2dd90099'}}>
-          YouNeeK time • {pad(Math.floor(time.units * 24 / 100))}:{pad(Math.floor(time.minutes * 60 / 100))}:{pad(Math.floor(time.seconds * 60 / 100))}
+          YouNeeK Army Time • {armyStr}
         </p>
 
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#39ff14]" style={{textShadow:'0 0 8px #39ff14aa'}}>
-          YouNeeK Army • {armyStr}
+          YouNeeK Time • {army12Str}
         </p>
       </div>
       </div>
