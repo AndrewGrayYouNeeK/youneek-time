@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
 import ClockTicks from './ClockTicks';
 import ClockLabels from './ClockLabels';
 import ClockHands from './ClockHands';
@@ -8,14 +7,6 @@ import ClockHands from './ClockHands';
 const CENTER_IMAGE = 'https://media.base44.com/images/public/69c46a76857b7906981251c6/1f25e836d_IMG_0681.png';
 
 export default function ClockDial({ time }) {
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (navigator.vibrate) {
-        navigator.vibrate([100, 100, 100]);
-      }
-    }, 600);
-    return () => clearInterval(interval);
-  }, []);
   return (
     <motion.div
       animate={{ scale: [1, 1.018, 1] }}
@@ -28,8 +19,8 @@ export default function ClockDial({ time }) {
       {/* Center image — fades in/out with the breathing animation */}
       {CENTER_IMAGE && (
         <motion.div
-          animate={{ rotate: [-1, 1, -1, 1, 0] }}
-          transition={{ duration: 0.15, repeat: Infinity, ease: 'linear' }}
+          animate={{ scale: [1, 1.1, 0.95, 1.1, 0.95, 1] }}
+          transition={{ duration: 0.6, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute inset-[8%] rounded-full overflow-hidden z-10"
           style={{ pointerEvents: 'none' }}
         >
