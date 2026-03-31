@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 const GREEN = '#39ff14';
 const RED   = '#ff2222';
 
@@ -35,7 +37,7 @@ const INNER_TICKS = Array.from({ length: 100 }, (_, i) => {
 
 export default function ClockTicks() {
   return (
-    <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full">
+    <motion.svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full" animate={{ opacity: [1, 0.7, 1] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}>
       {/* Subtle guide ring */}
       <circle cx="200" cy="200" r="162" stroke="rgba(255,255,255,1)" strokeWidth="0.15" fill="none" />
 
@@ -75,6 +77,6 @@ export default function ClockTicks() {
           style={{ filter: `drop-shadow(0 0 2px ${RED}66)` }}
         />
       ))}
-    </svg>
+    </motion.svg>
   );
 }

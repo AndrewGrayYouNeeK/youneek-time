@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 const GREEN = '#39ff14';
 const RED   = '#ff2222';
 
@@ -32,7 +34,7 @@ const innerLabels = [
 
 export default function ClockLabels() {
   return (
-    <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full">
+    <motion.svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full" animate={{ opacity: [1, 0.7, 1] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}>
       {/* Faint YOUNEEK watermark — placeholder for center image */}
       <text x="200" y="212" textAnchor="middle" fill="rgba(255,255,255,0.03)"
         fontSize="26" fontFamily="monospace" letterSpacing="4">
@@ -62,6 +64,6 @@ export default function ClockLabels() {
           </text>
         );
       })}
-    </svg>
+    </motion.svg>
   );
 }
