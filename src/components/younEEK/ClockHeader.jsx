@@ -36,7 +36,7 @@ export default function ClockHeader({ now, time }) {
 
       {/* YouNeeK Time */}
       <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[#39ff14]/55" style={{textShadow:'0 0 6px #39ff1433'}}>
-        YouNeeK Time • {army12Str.replace(' PM', '').replace(' AM', '').trim()}
+        YouNeeK Time • {army12Str.replace(' PM', '').replace(' AM', '')}
       </p>
 
       {/* YouNeeK Time */}
