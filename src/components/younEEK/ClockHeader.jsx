@@ -30,19 +30,20 @@ export default function ClockHeader({ now, time }) {
       <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[#ff2222]" style={{textShadow:'0 0 8px #ff222299'}}>by Andrew Gray</p>
 
 
-      <p className="mt-12 font-mono text-[11px] uppercase tracking-[0.18em] text-white/45">
-        Regular time • {standardTime.replace(' AM', '').replace(' PM', '')}
-      </p>
+      {/* Time displays — evenly spaced with intentional fade */}
+      <div className="mt-12 space-y-4">
+        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/30">
+          Regular time • {standardTime.replace(' AM', '').replace(' PM', '')}
+        </p>
 
-      {/* YouNeeK Time */}
-      <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[#39ff14]/55" style={{textShadow:'0 0 6px #39ff1433'}}>
-        YouNeeK Time • {army12Str.replace(' PM', '').replace(' AM', '')}
-      </p>
+        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#39ff14]/50" style={{textShadow:'0 0 6px #39ff1433'}}>
+          YouNeeK Time • {army12Str.replace(' PM', '').replace(' AM', '')}
+        </p>
 
-      {/* YouNeeK Time */}
-      <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-[#39ff14]/75" style={{textShadow:'0 0 6px #39ff1455'}}>
-        YouNeeK Time • {armyStr}
-      </p>
+        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#39ff14]" style={{textShadow:'0 0 8px #39ff14aa'}}>
+          YouNeeK Time • {armyStr}
+        </p>
+      </div>
     </div>
   );
 }
