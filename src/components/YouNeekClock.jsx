@@ -34,19 +34,10 @@ export default function YouNeekClock() {
     }
   }, [isGlitching]);
 
-  const testHeartbeat = () => {
-    if (navigator.vibrate) {
-      navigator.vibrate([100, 50, 100, 300]);
-    }
-  };
 
-  const testGlitch = () => {
-    setIsGlitching(true);
-    setTimeout(() => setIsGlitching(false), 5000);
-  };
 
   return (
-    <div className={`mx-auto flex min-h-screen w-full max-w-[36rem] flex-col items-center gap-8 px-4 py-8 sm:gap-9 sm:py-10 transition-colors duration-100 ${isGlitching ? 'bg-black' : 'bg-black'}`} onClick={testGlitch}>
+    <div className={`mx-auto flex min-h-screen w-full max-w-[36rem] flex-col items-center gap-8 px-4 py-8 sm:gap-9 sm:py-10 transition-colors duration-100 ${isGlitching ? 'bg-black' : 'bg-black'}`}>
       <div className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
         <ClockHeader now={now} time={time} />
       </div>
