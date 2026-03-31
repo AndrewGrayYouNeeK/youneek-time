@@ -16,10 +16,10 @@ export default function ClockDial({ time }) {
       {/* Clock face — pure black */}
       <div className="absolute inset-0 rounded-full border border-[#39ff14]/15 bg-black" />
 
-      {/* Center image — fades in/out with the breathing animation */}
+      {/* Center image — darkens when clock shrinks, brightens when it expands */}
       {CENTER_IMAGE && (
         <motion.div
-          animate={{ opacity: [1, 0, 1] }}
+          animate={{ opacity: [1, 0.3, 1] }}
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute inset-[12%] rounded-full overflow-hidden z-10"
           style={{ pointerEvents: 'none' }}
