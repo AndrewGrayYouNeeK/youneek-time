@@ -37,7 +37,7 @@ export default function ClockTicks() {
   return (
     <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full">
       {/* Subtle guide ring */}
-      <circle cx="200" cy="200" r="162" stroke="rgba(255,255,255,1)" strokeWidth="0.3" fill="none" />
+      <circle cx="200" cy="200" r="162" stroke="rgba(255,255,255,1)" strokeWidth="0.15" fill="none" />
 
       {/* Outer ring around green ticks */}
       <circle cx="200" cy="200" r="199" stroke="rgba(255,255,255,1)" strokeWidth="0.3" fill="none" />
