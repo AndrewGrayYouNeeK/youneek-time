@@ -21,6 +21,12 @@ export default function BottomTab() {
           <Link
             key={tab.path}
             to={tab.path}
+            onClick={(e) => {
+              if (isActive) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
             className={`flex flex-col items-center justify-center py-3 px-4 flex-1 transition-colors ${
               isActive
                 ? 'text-[#00ff88]'

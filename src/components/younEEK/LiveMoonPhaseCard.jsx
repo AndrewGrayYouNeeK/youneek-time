@@ -22,6 +22,7 @@ export default function LiveMoonPhaseCard() {
 
   useEffect(() => {
     const loadMoon = async () => {
+      setLoading(true);
       try {
         const response = await base44.functions.invoke('getMoonPhase', {});
         if (response && response.data) {
@@ -35,6 +36,10 @@ export default function LiveMoonPhaseCard() {
     };
 
     loadMoon();
+
+    const handleRefresh = () => loadMoon();
+    window.addEventListener('refresh-data', handleRefresh);
+    return () => window.removeEventListener('refresh-data', handleRefresh);
   }, []);
 
   const phaseName = useMemo(() => normalizePhase(moon?.phase), [moon?.phase]);

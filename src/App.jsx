@@ -10,6 +10,7 @@ import Settings from '@/pages/Settings';
 import Header from '@/components/Header';
 import BottomTab from '@/components/BottomTab';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect } from 'react';
 // Add page imports here
 
 const PageTransition = ({ children }) => {
@@ -68,6 +69,23 @@ const AuthenticatedApp = () => {
 
 
 function App() {
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const applyTheme = (e) => {
+      if (e.matches) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    };
+    applyTheme(mediaQuery);
+    
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', applyTheme);
+      return () => mediaQuery.removeEventListener('change', applyTheme);
+    }
+  }, []);
 
   return (
     <AuthProvider>
