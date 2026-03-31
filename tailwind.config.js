@@ -100,8 +100,8 @@ module.exports = {
   			'lightning': {
   				'0%': { color: '#000000', textShadow: '0 0 0px #ffffff00' },
   				'45%': { color: '#000000', textShadow: '0 0 0px #ffffff00' },
-  				'48%': { color: '#ffffff', textShadow: '0 0 20px #ffffff, 0 0 40px #ffffff, 0 0 80px #ffffff99' },
-  				'52%': { color: '#ffffff', textShadow: '0 0 20px #ffffff, 0 0 40px #ffffff, 0 0 80px #ffffff99' },
+  				'48%': { color: '#000000', textShadow: '0 0 8px #ffffff, 0 0 16px #ffffff, 0 0 32px #ffffff, 0 0 64px #ffffff99' },
+  				'52%': { color: '#000000', textShadow: '0 0 8px #ffffff, 0 0 16px #ffffff, 0 0 32px #ffffff, 0 0 64px #ffffff99' },
   				'55%': { color: '#000000', textShadow: '0 0 0px #ffffff00' },
   				'100%': { color: '#000000', textShadow: '0 0 0px #ffffff00' }
   			}
