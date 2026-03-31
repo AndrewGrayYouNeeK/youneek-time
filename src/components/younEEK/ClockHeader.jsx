@@ -34,14 +34,14 @@ export default function ClockHeader({ now, time }) {
         Regular time • {standardTime} {getUtcOffsetLabel(now)}
       </p>
 
-      {/* YouNeeK Time 24h */}
-      <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[#39ff14]/75" style={{textShadow:'0 0 6px #39ff1455'}}>
-        YouNeeK Time (24h) • {armyStr}
+      {/* YouNeeK Time */}
+      <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[#39ff14]/55" style={{textShadow:'0 0 6px #39ff1433'}}>
+        YouNeeK Time • {army12Str.replace(' PM', '').replace(' AM', '')}
       </p>
 
-      {/* YouNeeK Time 12h */}
-      <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-[#39ff14]/55" style={{textShadow:'0 0 6px #39ff1433'}}>
-        YouNeeK Time (12h) • {army12Str}
+      {/* YouNeeK Time */}
+      <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-[#39ff14]/75" style={{textShadow:'0 0 6px #39ff1455'}}>
+        YouNeeK Time • {armyStr}
       </p>
     </div>
   );
