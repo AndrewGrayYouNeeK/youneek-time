@@ -18,6 +18,11 @@ export default function ClockHeader({ now, time }) {
     const interval = setInterval(() => {
       const sides = ['left', 'center', 'right'];
       setGlowSide(sides[Math.floor(Math.random() * sides.length)]);
+      
+      // Thunder vibration pattern
+      if (navigator.vibrate) {
+        navigator.vibrate([50, 100, 75, 150, 100, 200]);
+      }
     }, 2000);
     return () => clearInterval(interval);
   }, []);
