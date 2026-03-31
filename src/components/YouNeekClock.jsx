@@ -18,12 +18,13 @@ export default function YouNeekClock() {
 
   // Heartbeat vibration synced with breathing (6-second cycle)
   useEffect(() => {
-    const vibratePattern = [100, 100, 100, 100]; // heartbeat pattern
+    // Stronger heartbeat: two pulses
+    const vibratePattern = [150, 100, 150, 500]; 
     const interval = setInterval(() => {
       if (navigator.vibrate) {
         navigator.vibrate(vibratePattern);
       }
-    }, 6000); // every 6 seconds
+    }, 6000);
     return () => clearInterval(interval);
   }, []);
 
