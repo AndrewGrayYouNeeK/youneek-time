@@ -28,20 +28,20 @@ export default function ClockHeader({ now, time }) {
     <div className="text-center">
       <p className="font-mono text-2xl uppercase tracking-[0.45em] text-[#39ff14] sm:text-3xl" style={{textShadow:'0 0 12px #39ff14aa'}}>YouNeeK Time</p>
       <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[#ff2222]" style={{textShadow:'0 0 8px #ff222299'}}>by Andrew Gray</p>
-      <p className="mt-2 font-mono text-xs uppercase tracking-[0.25em] text-white/30">Base-10 daily clock</p>
+
 
       <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/45">
         Regular time • {standardTime} {getUtcOffsetLabel(now)}
       </p>
 
-      {/* YouNeeK Army Time 24h */}
+      {/* YouNeeK Time 24h */}
       <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[#39ff14]/75" style={{textShadow:'0 0 6px #39ff1455'}}>
-        YouNeeK Army Time (24h) • {armyStr}
+        YouNeeK Time (24h) • {armyStr}
       </p>
 
-      {/* YouNeeK Army Time 12h */}
+      {/* YouNeeK Time 12h */}
       <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-[#39ff14]/55" style={{textShadow:'0 0 6px #39ff1433'}}>
-        YouNeeK Army Time (12h) • {army12Str}
+        YouNeeK Time (12h) • {army12Str}
       </p>
     </div>
   );

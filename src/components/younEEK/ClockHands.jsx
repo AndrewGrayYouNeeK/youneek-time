@@ -30,19 +30,19 @@ export default function ClockHands({ unitRotation, minuteRotation, secondRotatio
 
       {/* ── Red minute hand ── 
           Reaches into inner red tick area. Tip at r=148 (y=52).
-          Tail at r=22 below center. Thinner. */}
+          Tail at r=22 below center. Same thickness as hour hand. */}
       <g transform={`rotate(${minuteRotation}, 200, 200)`}>
         <line
           x1="200" y1="200"
-          x2="200" y2="222"
-          stroke={RED} strokeWidth="2.5" strokeLinecap="round"
-          style={{ filter: `drop-shadow(0 0 5px ${RED})` }}
+          x2="200" y2="230"
+          stroke={RED} strokeWidth="3.5" strokeLinecap="round"
+          style={{ filter: `drop-shadow(0 0 6px ${RED})` }}
         />
         <line
           x1="200" y1="200"
           x2="200" y2="52"
-          stroke={RED} strokeWidth="2.5" strokeLinecap="round"
-          style={{ filter: `drop-shadow(0 0 5px ${RED})` }}
+          stroke={RED} strokeWidth="3.5" strokeLinecap="round"
+          style={{ filter: `drop-shadow(0 0 6px ${RED})` }}
         />
       </g>
 
