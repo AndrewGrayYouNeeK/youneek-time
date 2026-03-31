@@ -34,7 +34,10 @@ export default function YouNeekClock() {
     }
   }, [isGlitching]);
 
-
+  const handleTestGlitch = () => {
+    setIsGlitching(true);
+    setTimeout(() => setIsGlitching(false), 1200);
+  };
 
   return (
     <div className={`mx-auto flex min-h-screen w-full max-w-[36rem] flex-col items-center gap-8 px-4 py-8 sm:gap-9 sm:py-10 transition-colors duration-100 ${isGlitching ? 'bg-black' : 'bg-black'}`}>
@@ -56,6 +59,12 @@ export default function YouNeekClock() {
       <div className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
         <AboutSection />
       </div>
+      <button 
+        onClick={handleTestGlitch} 
+        className="mt-4 px-4 py-2 text-xs uppercase tracking-widest text-white/30 hover:text-white/70 border border-white/10 rounded-full transition-colors"
+      >
+        Test Burnout Effect
+      </button>
     </div>
   );
 }
