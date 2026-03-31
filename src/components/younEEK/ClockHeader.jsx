@@ -38,23 +38,27 @@ export default function ClockHeader({ now, time }) {
             </feMerge>
           </filter>
         </defs>
-        {/* Left bolt with branches */}
-        <path className="bolt bolt-1" d="M200 20 L210 50 L195 85 L205 120 L190 150 L200 180 L185 200" filter="url(#glow)"/>
-        <path className="bolt bolt-1 branch" d="M210 50 L230 70 L215 95" filter="url(#glow)"/>
-        <path className="bolt bolt-1 branch" d="M195 85 L175 100 L170 125" filter="url(#glow)"/>
-        <path className="bolt bolt-1 branch" d="M190 150 L170 165 L175 185" filter="url(#glow)"/>
+        {/* Left bolt - straight with large side branches */}
+        <path className="bolt bolt-1" d="M180 15 L185 50 L180 100 L182 150 L175 200" filter="url(#glow)"/>
+        <path className="bolt bolt-1 branch" d="M185 50 L210 55 L205 75" filter="url(#glow)"/>
+        <path className="bolt bolt-1 branch" d="M180 100 L150 115 L145 140" filter="url(#glow)"/>
+        <path className="bolt bolt-1 branch" d="M182 150 L165 175 L160 195" filter="url(#glow)"/>
+        <path className="bolt bolt-1 branch" d="M180 100 L200 120 L210 145" filter="url(#glow)"/>
         
-        {/* Center bolt with branches */}
-        <path className="bolt bolt-2" d="M550 10 L560 45 L545 80 L558 120 L540 155 L552 190 L535 200" filter="url(#glow)"/>
-        <path className="bolt bolt-2 branch" d="M560 45 L580 65 L575 90" filter="url(#glow)"/>
-        <path className="bolt bolt-2 branch" d="M545 80 L525 105 L530 140" filter="url(#glow)"/>
-        <path className="bolt bolt-2 branch" d="M540 155 L520 170 L525 190" filter="url(#glow)"/>
+        {/* Center bolt - zigzag with many thin branches */}
+        <path className="bolt bolt-2" d="M550 5 L545 35 L560 65 L535 95 L555 130 L540 160 L550 190" filter="url(#glow)"/>
+        <path className="bolt bolt-2 branch" d="M545 35 L525 40 L520 55" filter="url(#glow)"/>
+        <path className="bolt bolt-2 branch" d="M560 65 L585 70 L595 90" filter="url(#glow)"/>
+        <path className="bolt bolt-2 branch" d="M535 95 L515 105 L510 125" filter="url(#glow)"/>
+        <path className="bolt bolt-2 branch" d="M555 130 L575 140 L585 160" filter="url(#glow)"/>
+        <path className="bolt bolt-2 branch" d="M540 160 L525 170 L530 185" filter="url(#glow)"/>
         
-        {/* Right bolt with branches */}
-        <path className="bolt bolt-3" d="M950 30 L960 60 L945 100 L958 140 L940 170 L952 195 L935 200" filter="url(#glow)"/>
-        <path className="bolt bolt-3 branch" d="M960 60 L985 80 L975 110" filter="url(#glow)"/>
-        <path className="bolt bolt-3 branch" d="M945 100 L920 125 L925 155" filter="url(#glow)"/>
-        <path className="bolt bolt-3 branch" d="M940 170 L915 185 L920 200" filter="url(#glow)"/>
+        {/* Right bolt - wide angular with thick lower branches */}
+        <path className="bolt bolt-3" d="M920 25 L935 55 L915 90 L940 120 L920 155 L945 185 L925 200" filter="url(#glow)"/>
+        <path className="bolt bolt-3 branch" d="M935 55 L965 50 L975 70" filter="url(#glow)"/>
+        <path className="bolt bolt-3 branch" d="M915 90 L885 95 L875 115" filter="url(#glow)"/>
+        <path className="bolt bolt-3 branch" d="M940 120 L970 130 L985 155" filter="url(#glow)"/>
+        <path className="bolt bolt-3 branch" d="M920 155 L900 170 L895 190" filter="url(#glow)"/>
       </svg>
       <div className="text-center relative z-10">
       <p className="font-mono text-5xl sm:text-6xl uppercase tracking-[0.45em] text-black font-bold animate-lightning">YouNeeK Time</p>
