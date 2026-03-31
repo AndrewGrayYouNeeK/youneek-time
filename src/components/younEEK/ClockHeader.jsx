@@ -70,6 +70,10 @@ export default function ClockHeader({ now, time }) {
           Regular time • {standardTime}
         </p>
 
+        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#2dd900]" style={{textShadow:'0 0 8px #2dd90099'}}>
+          YouNeeK army time • {pad(Math.floor(time.units * 24 / 100))}:{pad(Math.floor(time.minutes * 60 / 100))}:{pad(Math.floor(time.seconds * 60 / 100))}
+        </p>
+
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#39ff14]" style={{textShadow:'0 0 8px #39ff14aa'}}>
           YouNeeK Army • {armyStr}
         </p>
