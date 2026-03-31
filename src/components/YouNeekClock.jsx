@@ -58,8 +58,13 @@ export default function YouNeekClock() {
     </motion.div>
   );
 
+  const handleTestGlitch = () => {
+    setIsGlitching(true);
+    setTimeout(() => setIsGlitching(false), 5000);
+  };
+
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-[36rem] flex-col items-center gap-8 px-4 py-8 sm:gap-9 sm:py-10 bg-black">
+    <div className="mx-auto flex min-h-screen w-full max-w-[36rem] flex-col items-center gap-8 px-4 py-8 sm:gap-9 sm:py-10 bg-black" onClick={handleTestGlitch}>
       <GlitchElement delay={0}>
         <ClockHeader now={now} time={time} />
       </GlitchElement>
