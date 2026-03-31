@@ -1,3 +1,5 @@
+import React from 'react';
+
 function getUtcOffsetLabel(now) {
   const offsetMinutes = -now.getTimezoneOffset();
   const sign = offsetMinutes >= 0 ? '+' : '-';
@@ -10,6 +12,16 @@ function getUtcOffsetLabel(now) {
 function pad(v) { return String(v).padStart(2, '0'); }
 
 export default function ClockHeader({ now, time }) {
+  const [glowSide, setGlowSide] = React.useState('center');
+  
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      const sides = ['left', 'center', 'right'];
+      setGlowSide(sides[Math.floor(Math.random() * sides.length)]);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
   // Regular 12-hour time
   const standardTime = new Intl.DateTimeFormat('en-US', {
     hour: 'numeric',
@@ -61,7 +73,7 @@ export default function ClockHeader({ now, time }) {
         <path className="bolt bolt-3 branch" d="M920 155 L900 170 L895 190" filter="url(#glow)"/>
       </svg>
       <div className="text-center relative z-10">
-      <p className="font-mono text-5xl sm:text-6xl uppercase tracking-[0.45em] text-black font-bold animate-lightning">YouNeeK Time</p>
+      <p className={`font-mono text-5xl sm:text-6xl uppercase tracking-[0.45em] text-black font-bold glow-title glow-${glowSide}`}>YouNeeK Time</p>
       <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[#ff2222]" style={{textShadow:'0 0 8px #ff222299'}}>by Andrew Gray</p>
 
 
