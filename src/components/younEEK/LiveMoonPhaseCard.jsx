@@ -24,9 +24,16 @@ export default function LiveMoonPhaseCard() {
 
   useEffect(() => {
     const loadMoon = async () => {
-      const response = await base44.functions.invoke('getMoonPhase', {});
-      setMoon(response.data);
-      setLoading(false);
+      try {
+        const response = await base44.functions.invoke('getMoonPhase', {});
+        if (response && response.data) {
+          setMoon(response.data);
+        }
+      } catch (error) {
+        console.error("Failed to load moon phase:", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     loadMoon();

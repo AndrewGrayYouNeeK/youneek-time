@@ -64,8 +64,8 @@ export default function ClockHeader({ now, time }) {
       <p className="font-mono text-5xl sm:text-6xl uppercase tracking-[0.45em] text-black font-bold animate-lightning">YouNeeK Time</p>
       <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[#ff2222]" style={{textShadow:'0 0 8px #ff222299'}}>by Andrew Gray</p>
 
-      {/* Time displays — Regular, YouNeeK Army (24h), YouNeeK Time (12h), YouNeeK Time (100-100) */}
-      <div className="mt-12 space-y-1">
+      {/* Time displays — Regular, YouNeeK Army (24h), YouNeeK Time (12h) */}
+      <div className="mt-6 space-y-1">
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/30">
           Regular Time • {standardTime}
         </p>
@@ -76,10 +76,6 @@ export default function ClockHeader({ now, time }) {
 
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#39ff14]" style={{textShadow:'0 0 8px #39ff14aa'}}>
           YouNeeK Time • {army12Str}
-        </p>
-
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#39ff14]" style={{textShadow:'0 0 8px #39ff14aa'}}>
-          YouNeeK Time • {pad(time.units)}:{pad(time.minutes)}
         </p>
       </div>
       </div>
