@@ -21,7 +21,7 @@ export default function ClockDial({ time }) {
         <motion.div
           animate={{ opacity: [0.55, 0.1, 0.55] }}
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute inset-[25%] rounded-full overflow-hidden z-10"
+          className="absolute inset-[8%] rounded-full overflow-hidden z-10"
           style={{ pointerEvents: 'none' }}
         >
           <img src={CENTER_IMAGE} alt="center" className="w-full h-full object-cover opacity-70" />
