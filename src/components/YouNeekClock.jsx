@@ -23,7 +23,7 @@ export default function YouNeekClock() {
     if (newUnit !== lastUnit) {
       setLastUnit(newUnit);
       setIsGlitching(true);
-      const glitchTimer = setTimeout(() => setIsGlitching(false), 5000);
+      const glitchTimer = setTimeout(() => setIsGlitching(false), 1200);
       return () => clearTimeout(glitchTimer);
     }
   }, [time.units, lastUnit]);

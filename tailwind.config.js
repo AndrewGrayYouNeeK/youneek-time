@@ -80,21 +80,25 @@ module.exports = {
   			},
   			'glitch': {
   				'0%': { opacity: '0' },
-  				'8%': { opacity: '1' },
-  				'12%': { opacity: '0' },
-  				'28%': { opacity: '1' },
-  				'32%': { opacity: '0' },
-  				'52%': { opacity: '1' },
-  				'58%': { opacity: '0' },
-  				'76%': { opacity: '1' },
-  				'82%': { opacity: '0' },
+  				'3%': { opacity: '1' },
+  				'7%': { opacity: '0' },
+  				'15%': { opacity: '1' },
+  				'19%': { opacity: '0' },
+  				'28%': { opacity: '0.5' },
+  				'34%': { opacity: '0' },
+  				'45%': { opacity: '1' },
+  				'49%': { opacity: '0' },
+  				'62%': { opacity: '0.3' },
+  				'68%': { opacity: '0' },
+  				'80%': { opacity: '1' },
+  				'85%': { opacity: '0' },
   				'100%': { opacity: '0' }
   			}
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-  			'glitch': 'glitch 0.15s infinite'
+  			'glitch': 'glitch 1.2s ease-out'
   		}
   	}
   },
