@@ -79,23 +79,21 @@ module.exports = {
   				}
   			},
   			'glitch': {
-  				'0%': { opacity: '1' },
-  				'12%': { opacity: '1' },
-  				'13%': { opacity: '0.4' },
-  				'14%': { opacity: '1' },
-  				'28%': { opacity: '0.6' },
-  				'29%': { opacity: '0.2' },
-  				'30%': { opacity: '0.7' },
-  				'32%': { opacity: '0.3' },
-  				'45%': { opacity: '0.4' },
-  				'46%': { opacity: '0.1' },
-  				'47%': { opacity: '0.5' },
-  				'48%': { opacity: '0.15' },
-  				'50%': { opacity: '0.2' },
-  				'52%': { opacity: '0' },
-  				'53%': { opacity: '0.1' },
-  				'54%': { opacity: '0' },
-  				'100%': { opacity: '0' }
+  				'0%': { opacity: '1', filter: 'brightness(1) hue-rotate(0deg)' },
+  				'5%': { opacity: '0.2', filter: 'brightness(0.5)' },
+  				'10%': { opacity: '1', filter: 'brightness(3) hue-rotate(30deg)' },
+  				'12%': { opacity: '0', filter: 'brightness(0)' },
+  				'25%': { opacity: '1', filter: 'brightness(4) saturate(2)' },
+  				'28%': { opacity: '0.1', filter: 'brightness(0.2)' },
+  				'35%': { opacity: '0.8', filter: 'brightness(1.5)' },
+  				'40%': { opacity: '0', filter: 'brightness(0)' },
+  				'60%': { opacity: '0', filter: 'brightness(0)' },
+  				'70%': { opacity: '0.5', filter: 'brightness(1.2)' },
+  				'75%': { opacity: '0', filter: 'brightness(0)' },
+  				'85%': { opacity: '0.8', filter: 'brightness(2) hue-rotate(-20deg)' },
+  				'90%': { opacity: '0', filter: 'brightness(0)' },
+  				'95%': { opacity: '1', filter: 'brightness(2.5)' },
+  				'100%': { opacity: '1', filter: 'brightness(1) hue-rotate(0deg)' }
   			},
   			'lightning': {
   				'0%': { color: '#000000', textShadow: '0 0 0px #ffffff00', filter: 'brightness(1)' },
@@ -113,7 +111,7 @@ module.exports = {
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-  			'glitch': 'glitch 1.2s ease-out',
+  			'glitch': 'glitch 2s ease-out',
   			'lightning': 'lightning 3.5s ease-in-out infinite'
   		}
   	}
