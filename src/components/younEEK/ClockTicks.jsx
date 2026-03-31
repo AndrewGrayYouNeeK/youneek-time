@@ -41,14 +41,14 @@ export default function ClockTicks() {
 
       {/* Red "0" label at 12 o'clock on the inner tick ring */}
       <text
-        x="200" y="110"
+        x="200" y="60"
         textAnchor="middle"
         dominantBaseline="middle"
         fill={RED}
-        fontSize="11"
+        fontSize="10"
         fontFamily="monospace"
-        fontWeight="900"
-        style={{ filter: `drop-shadow(0 0 4px ${RED})` }}
+        fontWeight="700"
+        style={{ filter: `drop-shadow(0 0 3px ${RED}88)` }}
       >
         0
       </text>
