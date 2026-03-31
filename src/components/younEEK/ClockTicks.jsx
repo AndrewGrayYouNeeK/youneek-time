@@ -37,7 +37,7 @@ export default function ClockTicks() {
   return (
     <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full">
       {/* Subtle guide ring */}
-      <circle cx="200" cy="200" r="162" stroke="rgba(255,255,255,0.08)" strokeWidth="0.3" fill="none" />
+      <circle cx="200" cy="200" r="162" stroke="rgba(255,255,255,1)" strokeWidth="0.3" fill="none" />
 
       {/* Red "0" label at 12 o'clock on the inner tick ring */}
       <text
