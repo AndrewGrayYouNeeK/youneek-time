@@ -23,8 +23,8 @@ const sections = [
 
 export default function AboutSection() {
   return (
-    <section className="w-full px-5 py-6 sm:px-6">
-      <div className="space-y-6">
+    <section className="w-full px-5 py-6 sm:px-6 flex flex-col items-center text-center">
+      <div className="space-y-6 max-w-[32rem]">
         {sections.map((section, index) => (
           <div key={section.title} className={index === 0 ? '' : 'border-t border-white/8 pt-6'}>
             <h2 className="font-mono text-sm uppercase tracking-[0.35em] sm:text-[15px]"
@@ -37,7 +37,7 @@ export default function AboutSection() {
             </p>
 
             {section.points && (
-              <ul className="mt-4 space-y-3 font-mono text-[13px] tracking-[0.08em] text-white/70 sm:text-[14px]">
+              <ul className="mt-4 space-y-3 font-mono text-[13px] tracking-[0.08em] text-white/70 sm:text-[14px] inline-block text-left">
                 {section.points.map((point) => {
                   const [value, label] = point.split(' = ');
                   return (

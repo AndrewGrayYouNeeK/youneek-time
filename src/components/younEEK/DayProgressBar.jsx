@@ -16,7 +16,7 @@ export default function DayProgressBar({ time }) {
           }}
         />
       </div>
-      <div className="mt-3 flex items-center justify-between gap-4 font-mono text-[11px] uppercase tracking-[0.18em] text-white/40">
+      <div className="mt-4 flex flex-col items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-white/40 text-center">
         <span>{time.dayPercent}% of day</span>
         <span>H{pad(time.units)} M{pad(time.minutes)} S{pad(time.seconds)}</span>
       </div>
