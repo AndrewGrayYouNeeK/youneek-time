@@ -23,8 +23,7 @@ const sections = [
 
 export default function AboutSection() {
   return (
-    <section className="w-full rounded-[1.9rem] border border-white/10 bg-black px-5 py-6 sm:px-6"
-      style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.02), 0 0 28px rgba(0,0,0,0.5)' }}>
+    <section className="w-full px-5 py-6 sm:px-6">
       <div className="space-y-6">
         {sections.map((section, index) => (
           <div key={section.title} className={index === 0 ? '' : 'border-t border-white/8 pt-6'}>
