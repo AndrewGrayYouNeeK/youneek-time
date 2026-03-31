@@ -38,6 +38,11 @@ export default function LiveMoonPhaseCard() {
   }, []);
 
   const phaseName = useMemo(() => normalizePhase(moon?.phase), [moon?.phase]);
+  const isWaxing = useMemo(() => {
+    const p = phaseName.toLowerCase();
+    return p.includes('waxing') || p.includes('first') || p.includes('new');
+  }, [phaseName]);
+  const shadowOffset = (moon?.illumination || 0) / 100 * 56;
 
   if (loading) {
     return (
@@ -57,9 +62,17 @@ export default function LiveMoonPhaseCard() {
 
   return (
     <section className="w-full px-5 py-6 sm:px-6">
-      <div className="mb-6">
-        <p className="font-mono text-xs uppercase tracking-[0.3em] text-emerald-300/90">Live moon phase</p>
-        <h2 className="mt-3 font-mono text-2xl uppercase tracking-[0.22em] text-white sm:text-3xl">{phaseName}</h2>
+      <div className="mb-6 flex items-center justify-between">
+        <div>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-emerald-300/90">Live moon phase</p>
+          <h2 className="mt-3 font-mono text-2xl uppercase tracking-[0.22em] text-white sm:text-3xl">{phaseName}</h2>
+        </div>
+        <div className="relative h-14 w-14 overflow-hidden rounded-full bg-[#f4eed8] shadow-[0_0_28px_rgba(255,244,200,0.28)] flex-shrink-0">
+          <div
+            className="absolute inset-0 rounded-full bg-black"
+            style={{ transform: `translateX(${isWaxing ? -shadowOffset : shadowOffset}px)` }}
+          />
+        </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-3">
