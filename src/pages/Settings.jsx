@@ -1,9 +1,11 @@
 import { useAuth } from '@/lib/AuthContext';
 import { Button } from '@/components/ui/button';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
+import { useToast } from '@/components/ui/use-toast';
 
 export default function Settings() {
   const { user } = useAuth();
+  const { toast } = useToast();
 
   const handleDeleteAccount = async () => {
     if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
@@ -24,6 +26,21 @@ export default function Settings() {
             <h2 className="text-xl font-semibold mb-4">Account</h2>
             <p className="text-sm text-muted-foreground mb-2">Email</p>
             <p className="text-base">{user?.email || 'Not logged in'}</p>
+          </div>
+
+          <div className="border-b border-border pb-6">
+            <h2 className="text-xl font-semibold mb-4">Testing</h2>
+            <Button 
+              variant="secondary" 
+              onClick={() => {
+                toast({
+                  title: "Test Successful",
+                  description: "The test button was clicked and is working properly!",
+                });
+              }}
+            >
+              Test Button
+            </Button>
           </div>
 
           <div className="border-b border-border pb-6">
