@@ -80,14 +80,14 @@ module.exports = {
   			},
   			'glitch': {
   				'0%': { opacity: '0' },
-  				'15%': { opacity: '1' },
-  				'18%': { opacity: '0' },
-  				'42%': { opacity: '1' },
-  				'44%': { opacity: '0' },
-  				'58%': { opacity: '1' },
-  				'61%': { opacity: '0' },
-  				'83%': { opacity: '1' },
-  				'87%': { opacity: '0' },
+  				'8%': { opacity: '1' },
+  				'12%': { opacity: '0' },
+  				'28%': { opacity: '1' },
+  				'32%': { opacity: '0' },
+  				'52%': { opacity: '1' },
+  				'58%': { opacity: '0' },
+  				'76%': { opacity: '1' },
+  				'82%': { opacity: '0' },
   				'100%': { opacity: '0' }
   			}
   		},
