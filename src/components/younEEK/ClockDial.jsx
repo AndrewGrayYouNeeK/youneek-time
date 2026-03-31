@@ -4,7 +4,7 @@ import ClockLabels from './ClockLabels';
 import ClockHands from './ClockHands';
 
 // centerImage: pass a URL when ready, currently null = shows nothing
-const CENTER_IMAGE = null;
+const CENTER_IMAGE = 'https://media.base44.com/images/public/69c46a76857b7906981251c6/1f25e836d_IMG_0681.png';
 
 export default function ClockDial({ time }) {
   return (
