@@ -38,10 +38,14 @@ export default function LiveMoonPhaseCard() {
   }, []);
 
   const phaseName = useMemo(() => normalizePhase(moon?.phase), [moon?.phase]);
+  const isWaxing = useMemo(() => {
+    const p = phaseName.toLowerCase();
+    return p.includes('waxing') || p.includes('first') || p.includes('new');
+  }, [phaseName]);
 
   if (loading) {
     return (
-      <section className="w-full relative rounded-[2rem] overflow-hidden border border-white/5 bg-[#111111] p-6 sm:p-8">
+      <section className="w-full relative rounded-[1.6rem] overflow-hidden border border-emerald-200/15 bg-[#101010] p-6 sm:p-8 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04),0_0_26px_rgba(74,222,128,0.06)]">
         <div className="animate-pulse space-y-6">
           <div className="h-8 w-48 rounded bg-white/10" />
           <div className="space-y-4 pt-4">
@@ -55,36 +59,50 @@ export default function LiveMoonPhaseCard() {
   }
 
   return (
-    <section className="w-full relative rounded-[2rem] overflow-hidden border border-white/5 bg-[#111111]">
-      <div 
-        className="absolute top-0 left-0 w-full h-[60%] opacity-40 mix-blend-screen pointer-events-none"
-        style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1522030299830-16b8d3d049fe?auto=format&fit=crop&q=80&w=800")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 40%',
-          maskImage: 'linear-gradient(to bottom, black 30%, transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, black 30%, transparent 100%)'
-        }}
-      />
+    <section className="w-full relative rounded-[1.6rem] overflow-hidden border border-emerald-200/15 bg-[#101010] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04),0_0_26px_rgba(74,222,128,0.06)]">
       
-      <div className="relative z-10 p-6 sm:p-8 pt-[35%]">
-        <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#39ff14] drop-shadow-[0_0_8px_rgba(57,255,20,0.5)]">Live moon phase</p>
-          <h2 className="mt-2 font-mono text-xl sm:text-2xl uppercase tracking-[0.25em] text-white/90">{phaseName}</h2>
+      {/* Giant Moon Background */}
+      <div className="absolute top-[-25%] left-1/2 -translate-x-1/2 w-[160%] aspect-square rounded-full overflow-hidden pointer-events-none opacity-80">
+        <img 
+          src="https://images.unsplash.com/photo-1522030299830-16b8d3d049fe?auto=format&fit=crop&w=800&q=80" 
+          className="absolute inset-0 w-full h-full object-cover"
+          alt="Moon"
+          style={{ filter: 'grayscale(100%) contrast(1.1) brightness(1.2)' }}
+        />
+        {/* Shadow Overlay */}
+        <div 
+          className="absolute bg-[#101010]"
+          style={{
+            top: '-5%', bottom: '-5%', width: '100%',
+            left: isWaxing ? `-${moon?.illumination || 0}%` : `${moon?.illumination || 0}%`,
+            filter: 'blur(20px)',
+            borderRadius: '50%',
+          }}
+        />
+      </div>
+
+      {/* Gradient to fade bottom of the moon into the card background */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#101010] from-35% via-[#101010]/80 via-55% to-transparent pointer-events-none" />
+
+      {/* Content */}
+      <div className="relative z-10 px-6 sm:px-8 pt-44 pb-8">
+        <div className="mb-8">
+          <p className="font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.4em] text-[#39ff14] drop-shadow-[0_0_8px_rgba(57,255,20,0.4)]">Live moon phase</p>
+          <h2 className="mt-3 font-mono text-xl sm:text-2xl font-bold uppercase tracking-[0.35em] text-white drop-shadow-lg">{phaseName}</h2>
         </div>
         
-        <div className="mt-8 space-y-5">
+        <div className="flex flex-col gap-4">
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/35">Illumination</p>
-            <p className="mt-1.5 font-mono text-base tracking-wider text-white/80">{moon?.illumination}%</p>
+            <p className="font-mono text-[9px] font-bold uppercase tracking-[0.3em] text-white/40">Illumination</p>
+            <p className="mt-1 font-mono text-sm tracking-widest text-white/80">{moon?.illumination || 0}%</p>
           </div>
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/35">Moonrise</p>
-            <p className="mt-1.5 font-mono text-base tracking-wider text-white/80">{moon?.moonrise || '—'}</p>
+            <p className="font-mono text-[9px] font-bold uppercase tracking-[0.3em] text-white/40">Moonrise</p>
+            <p className="mt-1 font-mono text-sm tracking-widest text-white/80">{moon?.moonrise || '—'}</p>
           </div>
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/35">Moonset</p>
-            <p className="mt-1.5 font-mono text-base tracking-wider text-white/80">{moon?.moonset || '—'}</p>
+            <p className="font-mono text-[9px] font-bold uppercase tracking-[0.3em] text-white/40">Moonset</p>
+            <p className="mt-1 font-mono text-sm tracking-widest text-white/80">{moon?.moonset || '—'}</p>
           </div>
         </div>
       </div>
