@@ -16,20 +16,14 @@ export default function YouNeekClock() {
     return () => window.clearInterval(id);
   }, []);
 
-  // Heartbeat vibration synced with breathing (6-second cycle)
-  useEffect(() => {
-    // Stronger heartbeat: two pulses
-    const vibratePattern = [150, 100, 150, 500]; 
-    const interval = setInterval(() => {
-      if (navigator.vibrate) {
-        navigator.vibrate(vibratePattern);
-      }
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
+  const testVibrate = () => {
+    if (navigator.vibrate) {
+      navigator.vibrate([200, 100, 200]);
+    }
+  };
 
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-[36rem] flex-col items-center gap-8 px-4 py-8 sm:gap-9 sm:py-10 bg-black">
+    <div className="mx-auto flex min-h-screen w-full max-w-[36rem] flex-col items-center gap-8 px-4 py-8 sm:gap-9 sm:py-10 bg-black" onClick={testVibrate}>
       <ClockHeader now={now} time={time} />
       <DigitalTimeDisplay time={time} />
       <ClockDial time={time} />
