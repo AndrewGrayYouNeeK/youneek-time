@@ -67,7 +67,8 @@ export default function LiveMoonPhaseCard() {
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-emerald-300/90">Live moon phase</p>
           <h2 className="mt-3 font-mono text-2xl uppercase tracking-[0.22em] text-white sm:text-3xl">{phaseName}</h2>
         </div>
-        <div className="relative h-14 w-14 overflow-hidden rounded-full bg-[#f4eed8] shadow-[0_0_28px_rgba(255,244,200,0.28)] flex-shrink-0">
+        <div className="relative h-14 w-14 overflow-hidden rounded-full bg-black shadow-[0_0_28px_rgba(255,244,200,0.28)] flex-shrink-0">
+          <img src="https://media.base44.com/images/public/69c46a76857b7906981251c6/1f25e836d_IMG_0681.png" alt="Moon" className="absolute inset-0 w-full h-full object-cover opacity-90" />
           <div
             className="absolute inset-0 rounded-full bg-black"
             style={{ transform: `translateX(${isWaxing ? -shadowOffset : shadowOffset}px)` }}
