@@ -54,7 +54,7 @@ export default function PullToRefresh({ onRefresh, children }) {
       </div>
       <div 
         className="transition-transform duration-200 w-full h-full"
-        style={{ transform: `translateY(${isPulling && !refreshing ? Math.min(pullDistance, maxPull) : 0}px)` }}
+        style={{ transform: isPulling && !refreshing ? `translateY(${Math.min(pullDistance, maxPull)}px)` : 'none' }}
       >
         {children}
       </div>

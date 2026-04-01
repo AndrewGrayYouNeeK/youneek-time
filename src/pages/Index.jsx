@@ -10,14 +10,14 @@ export default function Index() {
   };
 
   return (
-    <PullToRefresh onRefresh={handleRefresh}>
-      <div className="min-h-screen relative bg-black text-white">
-        <AnimatedStars />
-        <ShootingStar />
+    <div className="min-h-screen relative bg-black text-white">
+      <AnimatedStars />
+      <ShootingStar />
+      <PullToRefresh onRefresh={handleRefresh}>
         <div className="relative z-10">
           <YouNeekClock />
         </div>
-      </div>
-    </PullToRefresh>
+      </PullToRefresh>
+    </div>
   );
 }

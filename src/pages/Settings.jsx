@@ -28,20 +28,7 @@ export default function Settings() {
             <p className="text-base">{user?.email || 'Not logged in'}</p>
           </div>
 
-          <div className="border-b border-border pb-6">
-            <h2 className="text-xl font-semibold mb-4">Testing</h2>
-            <Button 
-              variant="secondary" 
-              onClick={() => {
-                toast({
-                  title: "Test Successful",
-                  description: "The test button was clicked and is working properly!",
-                });
-              }}
-            >
-              Test Button
-            </Button>
-          </div>
+
 
           <div className="border-b border-border pb-6">
             <h2 className="text-xl font-semibold mb-4">Danger Zone</h2>
