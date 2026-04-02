@@ -2,6 +2,10 @@ const GREEN = '#39ff14';
 
 const sections = [
   {
+    title: 'What is YouNeeK Time',
+    body: 'YouNeeK Time is a modern, intuitive approach to timekeeping that reimagines the standard 24-hour day into a streamlined base-100 system, giving you a fresh perspective on the passage of time.',
+  },
+  {
     title: 'How to Read YouNeeK Time',
     body: 'The day is split into 100 equal hours from midnight to midnight, replacing the traditional 24-hour clock.',
     points: [
