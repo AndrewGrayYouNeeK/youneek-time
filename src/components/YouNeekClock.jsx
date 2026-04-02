@@ -28,7 +28,14 @@ export default function YouNeekClock() {
     }
   }, [now, lastHour]);
 
-
+  // Trigger once on mount for testing
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsGlitching(true);
+      setTimeout(() => setIsGlitching(false), 3000);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleTestGlitch = () => {
     setIsGlitching(true);
@@ -37,7 +44,10 @@ export default function YouNeekClock() {
 
   return (
     <div className={`mx-auto flex min-h-screen w-full max-w-[36rem] flex-col items-center gap-8 px-4 py-8 sm:gap-9 sm:py-10 transition-colors duration-100 ${isGlitching ? 'bg-black' : 'bg-transparent'}`}>
-      <div className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
+      <div 
+        className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''} cursor-pointer`}
+        onClick={handleTestGlitch}
+      >
         <ClockHeader now={now} time={time} />
       </div>
       <div className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
