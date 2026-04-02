@@ -6,7 +6,7 @@ import ClockHands from './ClockHands';
 // centerImage: pass a URL when ready, currently null = shows nothing
 const CENTER_IMAGE = 'https://media.base44.com/images/public/69c46a76857b7906981251c6/1f25e836d_IMG_0681.png';
 
-export default function ClockDial({ time, isGlitching }) {
+export default function ClockDial({ time }) {
   return (
     <motion.div
       animate={{ scale: [1, 1.018, 1] }}
@@ -24,7 +24,7 @@ export default function ClockDial({ time, isGlitching }) {
           className="absolute inset-[12%] rounded-full overflow-hidden z-10"
           style={{ pointerEvents: 'none' }}
         >
-          <img src={CENTER_IMAGE} alt="center" className="w-full h-full object-cover" style={{ opacity: isGlitching ? 0 : 0.7, transition: 'opacity 0.05s' }} />
+          <img src={CENTER_IMAGE} alt="center" className="w-full h-full object-cover" style={{ opacity: 0.7, transition: 'opacity 0.05s' }} />
         </motion.div>
       )}
 
