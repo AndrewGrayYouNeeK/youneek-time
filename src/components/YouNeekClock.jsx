@@ -33,6 +33,7 @@ export default function YouNeekClock() {
     const timer = setTimeout(() => {
       setIsGlitching(true);
       setTimeout(() => setIsGlitching(false), 3000);
+      if (window.triggerShootingStar) window.triggerShootingStar();
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
