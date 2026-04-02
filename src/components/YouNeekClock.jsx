@@ -40,6 +40,7 @@ export default function YouNeekClock() {
   const handleTestGlitch = () => {
     setIsGlitching(true);
     setTimeout(() => setIsGlitching(false), 3000);
+    if (window.triggerShootingStar) window.triggerShootingStar();
   };
 
   return (
