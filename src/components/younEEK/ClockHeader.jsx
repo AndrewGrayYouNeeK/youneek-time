@@ -90,18 +90,18 @@ export default function ClockHeader({ now, time }) {
       <p className="mt-3 font-mono text-xs uppercase tracking-[0.3em] text-black font-bold animate-lightning">by Andrew Gray</p>
 
       {/* Time displays — Regular, YouNeeK Army (24h), YouNeeK Time (12h) */}
-      <div className="mt-12 space-y-1">
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/30">
-          Regular Time • {standardTime}
-        </p>
+      <div className="mt-12 inline-grid grid-cols-[1fr_auto_1fr] gap-x-3 gap-y-1 items-center justify-center">
+        <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/30 text-right">Regular Time</div>
+        <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/30 text-center">•</div>
+        <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/30 text-left">{standardTime}</div>
 
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#1f990a]" style={{textShadow:'0 0 8px #1f990a99'}}>
-          YouNeeK Time • {army12Str}
-        </p>
+        <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#1f990a] text-right" style={{textShadow:'0 0 8px #1f990a99'}}>YouNeeK Time</div>
+        <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#1f990a] text-center" style={{textShadow:'0 0 8px #1f990a99'}}>•</div>
+        <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#1f990a] text-left" style={{textShadow:'0 0 8px #1f990a99'}}>{army12Str}</div>
 
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#2dd900]" style={{textShadow:'0 0 8px #2dd90099'}}>
-          YouNeeK Army Time • {armyStr}
-        </p>
+        <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#2dd900] text-right" style={{textShadow:'0 0 8px #2dd90099'}}>YouNeeK Army Time</div>
+        <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#2dd900] text-center" style={{textShadow:'0 0 8px #2dd90099'}}>•</div>
+        <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#2dd900] text-left" style={{textShadow:'0 0 8px #2dd90099'}}>{armyStr}</div>
       </div>
       </div>
     </div>
