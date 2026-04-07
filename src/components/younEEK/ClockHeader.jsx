@@ -41,7 +41,7 @@ export default function ClockHeader({ now, time }) {
   }, []);
 
   // Regular 12-hour time
-  const standardTime = `${time.hours12}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+  const standardTime = `${pad(time.hours12)}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
 
   // YouNeeK Army Time: 24h real hours, 100-minute hours, 100-second minutes
   const armyStr = `${pad(time.armyHours)}:${pad(time.armyMinutes)}:${pad(time.armySeconds)}`;
