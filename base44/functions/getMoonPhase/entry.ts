@@ -1,29 +1,29 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.23';
+import SunCalc from 'npm:suncalc@1.9.0';
 
 Deno.serve(async (req) => {
   try {
-    const response = await fetch('https://wttr.in/?format=j1', {
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
-
-    if (!response.ok) {
-      return Response.json({ error: 'Failed to fetch moon data' }, { status: 502 });
-    }
-
-    const data = await response.json();
-    const astronomy = data?.weather?.[0]?.astronomy?.[0];
-
-    if (!astronomy) {
-      return Response.json({ error: 'Moon data unavailable' }, { status: 502 });
-    }
+    const date = new Date();
+    const moonIllumination = SunCalc.getMoonIllumination(date);
+    
+    const phaseValue = moonIllumination.phase;
+    let phaseName = 'New Moon';
+    if (phaseValue < 0.03) phaseName = 'New Moon';
+    else if (phaseValue < 0.22) phaseName = 'Waxing Crescent';
+    else if (phaseValue < 0.28) phaseName = 'First Quarter';
+    else if (phaseValue < 0.47) phaseName = 'Waxing Gibbous';
+    else if (phaseValue < 0.53) phaseName = 'Full Moon';
+    else if (phaseValue < 0.72) phaseName = 'Waning Gibbous';
+    else if (phaseValue < 0.78) phaseName = 'Last Quarter';
+    else if (phaseValue < 0.97) phaseName = 'Waning Crescent';
+    
+    const illumination = Math.round(moonIllumination.fraction * 100);
 
     return Response.json({
-      phase: astronomy.moon_phase,
-      illumination: astronomy.moon_illumination,
-      moonrise: astronomy.moonrise,
-      moonset: astronomy.moonset
+      phase: phaseName,
+      illumination: illumination,
+      moonrise: '—',
+      moonset: '—'
     });
   } catch (error) {
     return Response.json({ error: error.message }, { status: 500 });
