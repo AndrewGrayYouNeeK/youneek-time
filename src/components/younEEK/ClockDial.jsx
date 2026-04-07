@@ -1,12 +1,24 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ClockTicks from './ClockTicks';
 import ClockLabels from './ClockLabels';
 import ClockHands from './ClockHands';
 
-// centerImage: pass a URL when ready, currently null = shows nothing
-const CENTER_IMAGE = 'https://media.base44.com/images/public/69c46a76857b7906981251c6/1f25e836d_IMG_0681.png';
+const DEFAULT_CENTER_IMAGE = 'https://media.base44.com/images/public/69c46a76857b7906981251c6/1f25e836d_IMG_0681.png';
 
 export default function ClockDial({ time, isGlitching }) {
+  const [centerImage, setCenterImage] = useState(
+    localStorage.getItem('clockFaceUrl') || DEFAULT_CENTER_IMAGE
+  );
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      setCenterImage(localStorage.getItem('clockFaceUrl') || DEFAULT_CENTER_IMAGE);
+    };
+    window.addEventListener('clock-face-updated', handleUpdate);
+    return () => window.removeEventListener('clock-face-updated', handleUpdate);
+  }, []);
+
   return (
     <motion.div
       animate={{ scale: [1, 1.018, 1] }}
@@ -17,14 +29,14 @@ export default function ClockDial({ time, isGlitching }) {
       <div className="absolute inset-0 rounded-full border border-[#39ff14]/15 bg-transparent" />
 
       {/* Center image — darkens when clock shrinks, brightens when it expands */}
-      {CENTER_IMAGE && (
+      {centerImage && (
         <motion.div
           animate={{ opacity: [1, 0.3, 1] }}
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute inset-[12%] rounded-full overflow-hidden z-10"
           style={{ pointerEvents: 'none' }}
         >
-          <img src={CENTER_IMAGE} alt="center" className="w-full h-full object-cover" style={{ opacity: isGlitching ? 0 : 0.7, transition: 'opacity 0.05s' }} />
+          <img src={centerImage} alt="center" className="w-full h-full object-cover" style={{ opacity: isGlitching ? 0 : 0.7, transition: 'opacity 0.05s' }} />
         </motion.div>
       )}
 
