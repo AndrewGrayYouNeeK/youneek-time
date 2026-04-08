@@ -4,40 +4,6 @@ import { Button } from '@/components/ui/button';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const playThump = (isStrong) => {
-  try {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!window.audioCtx) window.audioCtx = new AudioContext();
-    const ctx = window.audioCtx;
-    if (ctx.state === 'suspended') ctx.resume();
-
-    const triggerSingleThump = (timeOffset) => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(isStrong ? 65 : 45, ctx.currentTime + timeOffset);
-      osc.frequency.exponentialRampToValueAtTime(10, ctx.currentTime + timeOffset + 0.1);
-      
-      gain.gain.setValueAtTime(0, ctx.currentTime + timeOffset);
-      gain.gain.linearRampToValueAtTime(isStrong ? 1 : 0.6, ctx.currentTime + timeOffset + 0.01);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + timeOffset + 0.15);
-      
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      
-      osc.start(ctx.currentTime + timeOffset);
-      osc.stop(ctx.currentTime + timeOffset + 0.2);
-    };
-
-    // "thu"
-    triggerSingleThump(0);
-    // "thump" (slightly delayed to create a heartbeat feel)
-    triggerSingleThump(0.2);
-
-  } catch (e) {}
-};
-
 export default function HapticTimeManager({ time, now }) {
   const [enabled, setEnabled] = useState(false);
   const [isPlayingTime, setIsPlayingTime] = useState(false);
@@ -59,7 +25,6 @@ export default function HapticTimeManager({ time, now }) {
       window.iosHaptics.haptic();
       setTimeout(() => window.iosHaptics.haptic(), 200);
     }
-    playThump(false);
   };
 
   const triggerStrong = () => {
@@ -71,7 +36,6 @@ export default function HapticTimeManager({ time, now }) {
        window.iosHaptics.haptic();
        setTimeout(() => window.iosHaptics.haptic(), 200);
     }
-    playThump(true);
   };
 
   const playDigit = async (digit, isHour) => {
@@ -125,17 +89,19 @@ export default function HapticTimeManager({ time, now }) {
     isPlayingRef.current = false;
   };
 
-  // Heartbeat every second
+  // Heartbeat every time the second hand goes around (1 YouNeeK minute = 8.64s)
+  const lastMinuteRef = useRef(time.minutes);
+
   useEffect(() => {
     if (!enabled) return;
-    const interval = setInterval(() => {
+    if (time.minutes !== lastMinuteRef.current) {
+      lastMinuteRef.current = time.minutes;
       // Don't beat during time-telling
       if (!isPlayingRef.current) {
         triggerFaint();
       }
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [enabled]);
+    }
+  }, [time.minutes, enabled]);
 
   // Trigger time on YouNeeK Hour
   useEffect(() => {

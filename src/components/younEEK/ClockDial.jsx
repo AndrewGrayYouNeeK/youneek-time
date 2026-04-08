@@ -21,8 +21,8 @@ export default function ClockDial({ time, isGlitching }) {
 
   return (
     <motion.div
-      animate={{ scale: [1, 1.035, 1] }}
-      transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+      animate={{ scale: [1, 1.08, 1] }}
+      transition={{ duration: 8.64, repeat: Infinity, ease: 'easeInOut' }}
       className="relative aspect-square w-full max-w-[32rem]"
     >
       {/* Clock face — transparent to let stars show through */}
