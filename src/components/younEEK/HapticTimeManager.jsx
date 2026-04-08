@@ -11,21 +11,30 @@ const playThump = (isStrong) => {
     const ctx = window.audioCtx;
     if (ctx.state === 'suspended') ctx.resume();
 
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(isStrong ? 60 : 40, ctx.currentTime);
-    
-    gain.gain.setValueAtTime(0, ctx.currentTime);
-    gain.gain.linearRampToValueAtTime(isStrong ? 1 : 0.5, ctx.currentTime + 0.01);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (isStrong ? 0.15 : 0.05));
-    
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    
-    osc.start();
-    osc.stop(ctx.currentTime + (isStrong ? 0.15 : 0.05));
+    const triggerSingleThump = (timeOffset) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(isStrong ? 65 : 45, ctx.currentTime + timeOffset);
+      osc.frequency.exponentialRampToValueAtTime(10, ctx.currentTime + timeOffset + 0.1);
+      
+      gain.gain.setValueAtTime(0, ctx.currentTime + timeOffset);
+      gain.gain.linearRampToValueAtTime(isStrong ? 1 : 0.6, ctx.currentTime + timeOffset + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + timeOffset + 0.15);
+      
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      
+      osc.start(ctx.currentTime + timeOffset);
+      osc.stop(ctx.currentTime + timeOffset + 0.2);
+    };
+
+    // "thu"
+    triggerSingleThump(0);
+    // "thump" (slightly delayed to create a heartbeat feel)
+    triggerSingleThump(0.2);
+
   } catch (e) {}
 };
 
@@ -45,12 +54,23 @@ export default function HapticTimeManager({ time, now }) {
   }, [isPlayingTime]);
 
   const triggerFaint = () => {
-    if (navigator.vibrate) navigator.vibrate(15);
+    if (navigator.vibrate) navigator.vibrate([50, 100, 80]);
+    if (window.iosHaptics?.haptic) {
+      window.iosHaptics.haptic();
+      setTimeout(() => window.iosHaptics.haptic(), 200);
+    }
     playThump(false);
   };
 
   const triggerStrong = () => {
-    if (navigator.vibrate) navigator.vibrate(60);
+    if (navigator.vibrate) navigator.vibrate([80, 100, 120]);
+    if (window.iosHaptics?.haptic?.confirm) {
+       window.iosHaptics.haptic.confirm();
+       setTimeout(() => window.iosHaptics.haptic.confirm(), 200);
+    } else if (window.iosHaptics?.haptic) {
+       window.iosHaptics.haptic();
+       setTimeout(() => window.iosHaptics.haptic(), 200);
+    }
     playThump(true);
   };
 
