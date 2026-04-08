@@ -3,9 +3,23 @@ import { Button } from '@/components/ui/button';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { useToast } from '@/components/ui/use-toast';
 
+import { useState, useEffect } from 'react';
+import { Switch } from '@/components/ui/switch';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+
 export default function Settings() {
   const { user } = useAuth();
   const { toast } = useToast();
+  
+  const [freqEnabled, setFreqEnabled] = useState(() => localStorage.getItem('hourlyFreqEnabled') === 'true');
+  const [freqHz, setFreqHz] = useState(() => localStorage.getItem('hourlyFreqHz') || '432');
+  const [freqDuration, setFreqDuration] = useState(() => localStorage.getItem('hourlyFreqDuration') || '5');
+
+  useEffect(() => {
+    localStorage.setItem('hourlyFreqEnabled', freqEnabled);
+    localStorage.setItem('hourlyFreqHz', freqHz);
+    localStorage.setItem('hourlyFreqDuration', freqDuration);
+  }, [freqEnabled, freqHz, freqDuration]);
 
   const handleDeleteAccount = async () => {
     if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
@@ -96,6 +110,64 @@ export default function Settings() {
           </div>
 
 
+
+          <div className="border-b border-border pb-6">
+            <h2 className="text-xl font-semibold mb-4">Hourly Frequency</h2>
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-medium text-base">Play Frequency on the Hour</p>
+                  <p className="text-sm text-muted-foreground">Plays a sound frequency every YouNeeK Hour.</p>
+                </div>
+                <Switch 
+                  checked={freqEnabled}
+                  onCheckedChange={setFreqEnabled}
+                />
+              </div>
+
+              {freqEnabled && (
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-sm text-muted-foreground mb-2">Frequency</p>
+                    <Select value={freqHz} onValueChange={setFreqHz}>
+                      <SelectTrigger className="w-full sm:w-[200px]">
+                        <SelectValue placeholder="Select frequency" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="174">174 Hz (Healing)</SelectItem>
+                        <SelectItem value="285">285 Hz (Tissue)</SelectItem>
+                        <SelectItem value="396">396 Hz (Liberation)</SelectItem>
+                        <SelectItem value="417">417 Hz (Undoing)</SelectItem>
+                        <SelectItem value="432">432 Hz (Miracle)</SelectItem>
+                        <SelectItem value="528">528 Hz (Transformation)</SelectItem>
+                        <SelectItem value="639">639 Hz (Connection)</SelectItem>
+                        <SelectItem value="741">741 Hz (Expression)</SelectItem>
+                        <SelectItem value="852">852 Hz (Awakening)</SelectItem>
+                        <SelectItem value="963">963 Hz (Crown)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div>
+                    <p className="text-sm text-muted-foreground mb-2">Duration: {freqDuration} Seconds</p>
+                    <Select value={freqDuration} onValueChange={setFreqDuration}>
+                      <SelectTrigger className="w-full sm:w-[200px]">
+                        <SelectValue placeholder="Select duration" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="1">1 Second</SelectItem>
+                        <SelectItem value="3">3 Seconds</SelectItem>
+                        <SelectItem value="5">5 Seconds</SelectItem>
+                        <SelectItem value="10">10 Seconds</SelectItem>
+                        <SelectItem value="30">30 Seconds</SelectItem>
+                        <SelectItem value="60">60 Seconds</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
 
           <div className="border-b border-border pb-6">
             <h2 className="text-xl font-semibold mb-4">Danger Zone</h2>

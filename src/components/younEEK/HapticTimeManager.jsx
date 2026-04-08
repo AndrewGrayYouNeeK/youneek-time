@@ -4,6 +4,31 @@ import { Button } from '@/components/ui/button';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+const playThump = (isStrong) => {
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!window.audioCtx) window.audioCtx = new AudioContext();
+    const ctx = window.audioCtx;
+    if (ctx.state === 'suspended') ctx.resume();
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(isStrong ? 60 : 40, ctx.currentTime);
+    
+    gain.gain.setValueAtTime(0, ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(isStrong ? 1 : 0.5, ctx.currentTime + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (isStrong ? 0.15 : 0.05));
+    
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    
+    osc.start();
+    osc.stop(ctx.currentTime + (isStrong ? 0.15 : 0.05));
+  } catch (e) {}
+};
+
 export default function HapticTimeManager({ time, now }) {
   const [enabled, setEnabled] = useState(false);
   const [isPlayingTime, setIsPlayingTime] = useState(false);
@@ -21,13 +46,12 @@ export default function HapticTimeManager({ time, now }) {
 
   const triggerFaint = () => {
     if (navigator.vibrate) navigator.vibrate(15);
-    if (window.iosHaptics?.haptic) window.iosHaptics.haptic();
+    playThump(false);
   };
 
   const triggerStrong = () => {
     if (navigator.vibrate) navigator.vibrate(60);
-    if (window.iosHaptics?.haptic?.confirm) window.iosHaptics.haptic.confirm();
-    else if (window.iosHaptics?.haptic) window.iosHaptics.haptic();
+    playThump(true);
   };
 
   const playDigit = async (digit, isHour) => {

@@ -5,6 +5,7 @@ import DigitalTimeDisplay from '@/components/younEEK/DigitalTimeDisplay';
 import ClockDial from '@/components/younEEK/ClockDial';
 import DayProgressBar from '@/components/younEEK/DayProgressBar';
 import HapticTimeManager from '@/components/younEEK/HapticTimeManager';
+import FrequencyManager from '@/components/younEEK/FrequencyManager';
 import LiveMoonPhaseCard from '@/components/younEEK/LiveMoonPhaseCard';
 import AboutSection from '@/components/younEEK/AboutSection';
 
@@ -58,6 +59,7 @@ export default function YouNeekClock() {
       </div>
       <div className={`w-full transition-opacity duration-100 ${isGlitching ? 'opacity-0' : ''}`}>
         <HapticTimeManager time={time} now={now} />
+        <FrequencyManager time={time} />
       </div>
       <div className={`w-full ${isGlitching ? 'animate-glitch' : ''}`}>
         <ClockDial time={time} isGlitching={isGlitching} />
