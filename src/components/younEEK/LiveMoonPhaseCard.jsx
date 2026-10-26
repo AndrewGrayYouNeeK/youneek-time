@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { base44 } from '@/api/base44Client';
+import { getMoonPhase } from '@/lib/moonPhase';
 
 function normalizePhase(phase) {
   const value = (phase || '').toLowerCase();
@@ -17,27 +17,10 @@ function normalizePhase(phase) {
 }
 
 export default function LiveMoonPhaseCard() {
-  const [moon, setMoon] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [moon, setMoon] = useState(() => getMoonPhase());
 
   useEffect(() => {
-    const loadMoon = async () => {
-      setLoading(true);
-      try {
-        const response = await base44.functions.invoke('getMoonPhase', {});
-        if (response && response.data) {
-          setMoon(response.data);
-        }
-      } catch (error) {
-        console.error("Failed to load moon phase:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadMoon();
-
-    const handleRefresh = () => loadMoon();
+    const handleRefresh = () => setMoon(getMoonPhase());
     window.addEventListener('refresh-data', handleRefresh);
     return () => window.removeEventListener('refresh-data', handleRefresh);
   }, []);
@@ -47,21 +30,6 @@ export default function LiveMoonPhaseCard() {
     const p = phaseName.toLowerCase();
     return p.includes('waxing') || p.includes('first') || p.includes('new');
   }, [phaseName]);
-
-  if (loading) {
-    return (
-      <section className="w-full relative rounded-[1.6rem] overflow-hidden border border-emerald-200/15 bg-[#101010] p-6 sm:p-8 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04),0_0_26px_rgba(74,222,128,0.06)]">
-        <div className="animate-pulse space-y-6">
-          <div className="h-8 w-48 rounded bg-white/10" />
-          <div className="space-y-4 pt-4">
-            <div className="h-6 w-24 rounded bg-white/5" />
-            <div className="h-6 w-24 rounded bg-white/5" />
-            <div className="h-6 w-24 rounded bg-white/5" />
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section className="w-full relative rounded-[1.6rem] overflow-hidden border border-emerald-200/15 bg-[#101010] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04),0_0_26px_rgba(74,222,128,0.06)]">
